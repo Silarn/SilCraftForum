@@ -1,0 +1,196 @@
+*** includes/functions_user.php	2013-09-28 15:40:10.000000000 +0200
+--- includes/functions_user.php	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 348,380 ****
+  		set_config('newest_user_colour', $row['group_colour'], true);
+  	}
+  
+  	return $user_id;
+  }
+  
+  /**
+! * Remove User
+! */
+! function user_delete($mode, $user_id, $post_username = false)
+  {
+! 	global $cache, $config, $db, $user, $auth;
+  	global $phpbb_root_path, $phpEx;
+  
+  	$sql = 'SELECT *
+  		FROM ' . USERS_TABLE . '
+! 		WHERE user_id = ' . $user_id;
+  	$result = $db->sql_query($sql);
+! 	$user_row = $db->sql_fetchrow($result);
+  	$db->sql_freeresult($result);
+  
+! 	if (!$user_row)
+  	{
+  		return false;
+  	}
+  
+  	// Before we begin, we will remove the reports the user issued.
+  	$sql = 'SELECT r.post_id, p.topic_id
+  		FROM ' . REPORTS_TABLE . ' r, ' . POSTS_TABLE . ' p
+! 		WHERE r.user_id = ' . $user_id . '
+  			AND p.post_id = r.post_id';
+  	$result = $db->sql_query($sql);
+  
+--- 371,471 ----
+  		set_config('newest_user_colour', $row['group_colour'], true);
+  	}
+  
++ 	// Use default notifications settings if notifications_data is not set
++ 	if ($notifications_data === null)
++ 	{
++ 		$notifications_data = array(
++ 			array(
++ 				'item_type'	=> 'notification.type.post',
++ 				'method'	=> 'notification.method.email',
++ 			),
++ 			array(
++ 				'item_type'	=> 'notification.type.topic',
++ 				'method'	=> 'notification.method.email',
++ 			),
++ 		);
++ 	}
++ 
++ 	// Subscribe user to notifications if necessary
++ 	if (!empty($notifications_data))
++ 	{
++ 		$phpbb_notifications = $phpbb_container->get('notification_manager');
++ 		foreach ($notifications_data as $subscription)
++ 		{
++ 			$phpbb_notifications->add_subscription($subscription['item_type'], 0, $subscription['method'], $user_id);
++ 		}
++ 	}
++ 
++ 	/**
++ 	* Event that returns user id, user detals and user CPF of newly registared user
++ 	*
++ 	* @event core.user_add_after
++ 	* @var int		user_id			User id of newly registared user
++ 	* @var array	user_row		Array of user details submited to user_add
++ 	* @var array	cp_data			Array of Custom profile fields submited to user_add
++ 	* @since 3.1.0-b5
++ 	*/
++ 	$vars = array('user_id', 'user_row', 'cp_data');
++ 	extract($phpbb_dispatcher->trigger_event('core.user_add_after', compact($vars)));
++ 
+  	return $user_id;
+  }
+  
+  /**
+!  * Remove User
+!  *
+!  * @param string	$mode		Either 'retain' or 'remove'
+!  * @param mixed		$user_ids	Either an array of integers or an integer
+!  * @param bool		$retain_username
+!  * @return bool
+!  */
+! function user_delete($mode, $user_ids, $retain_username = true)
+  {
+! 	global $cache, $config, $db, $user, $phpbb_dispatcher, $phpbb_container;
+  	global $phpbb_root_path, $phpEx;
+  
++ 	$db->sql_transaction('begin');
++ 
++ 	$user_rows = array();
++ 	if (!is_array($user_ids))
++ 	{
++ 		$user_ids = array($user_ids);
++ 	}
++ 
++ 	$user_id_sql = $db->sql_in_set('user_id', $user_ids);
++ 
+  	$sql = 'SELECT *
+  		FROM ' . USERS_TABLE . '
+! 		WHERE ' . $user_id_sql;
+  	$result = $db->sql_query($sql);
+! 	while ($row = $db->sql_fetchrow($result))
+! 	{
+! 		$user_rows[(int) $row['user_id']] = $row;
+! 	}
+  	$db->sql_freeresult($result);
+  
+! 	if (empty($user_rows))
+  	{
+  		return false;
+  	}
+  
++ 	/**
++ 	* Event before a user is deleted
++ 	*
++ 	* @event core.delete_user_before
++ 	* @var	string	mode		Mode of deletion (retain/delete posts)
++ 	* @var	array	user_ids	IDs of the deleted user
++ 	* @var	mixed	retain_username	True if username should be retained
++ 	*				or false if not
++ 	* @since 3.1.0-a1
++ 	*/
++ 	$vars = array('mode', 'user_ids', 'retain_username');
++ 	extract($phpbb_dispatcher->trigger_event('core.delete_user_before', compact($vars)));
++ 
+  	// Before we begin, we will remove the reports the user issued.
+  	$sql = 'SELECT r.post_id, p.topic_id
+  		FROM ' . REPORTS_TABLE . ' r, ' . POSTS_TABLE . ' p
+! 		WHERE ' . $db->sql_in_set('r.user_id', $user_ids) . '
+  			AND p.post_id = r.post_id';
+  	$result = $db->sql_query($sql);
+  
+***************
+*** 602,623 ****
+  	{
+  		include($phpbb_root_path . 'includes/functions_privmsgs.' . $phpEx);
+  	}
+! 	phpbb_delete_user_pms($user_id);
+  
+  	$db->sql_transaction('commit');
+  
+  	// Reset newest user info if appropriate
+! 	if ($config['newest_user_id'] == $user_id)
+  	{
+  		update_last_username();
+  	}
+  
+- 	// Decrement number of users if this user is active
+- 	if ($user_row['user_type'] != USER_INACTIVE && $user_row['user_type'] != USER_IGNORE)
+- 	{
+- 		set_config_count('num_users', -1, true);
+- 	}
+- 
+  	return false;
+  }
+  
+--- 739,770 ----
+  	{
+  		include($phpbb_root_path . 'includes/functions_privmsgs.' . $phpEx);
+  	}
+! 	phpbb_delete_users_pms($user_ids);
+! 
+! 	$phpbb_notifications = $phpbb_container->get('notification_manager');
+! 	$phpbb_notifications->delete_notifications('notification.type.admin_activate_user', $user_ids);
+  
+  	$db->sql_transaction('commit');
+  
++ 	/**
++ 	* Event after a user is deleted
++ 	*
++ 	* @event core.delete_user_after
++ 	* @var	string	mode		Mode of deletion (retain/delete posts)
++ 	* @var	array	user_ids	IDs of the deleted user
++ 	* @var	mixed	retain_username	True if username should be retained
++ 	*				or false if not
++ 	* @since 3.1.0-a1
++ 	*/
++ 	$vars = array('mode', 'user_ids', 'retain_username');
++ 	extract($phpbb_dispatcher->trigger_event('core.delete_user_after', compact($vars)));
++ 
+  	// Reset newest user info if appropriate
+! 	if (in_array($config['newest_user_id'], $user_ids))
+  	{
+  		update_last_username();
+  	}
+  
+  	return false;
+  }
+  

@@ -1,0 +1,58 @@
+*** adm/style/acp_board.html	2015-01-30 01:32:34.000000000 +0100
+--- adm/style/acp_board.html	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 1,6 ****
+  <!-- INCLUDE overall_header.html -->
+  
+! <a name="maincontent"></a>
+  
+  <h1>{L_TITLE}</h1>
+  
+--- 1,6 ----
+  <!-- INCLUDE overall_header.html -->
+  
+! <a id="maincontent"></a>
+  
+  <h1>{L_TITLE}</h1>
+  
+***************
+*** 25,31 ****
+  	<!-- ELSE -->
+  
+  		<dl>
+! 			<dt><label for="{options.KEY}">{options.TITLE}:</label><!-- IF options.S_EXPLAIN --><br /><span>{options.TITLE_EXPLAIN}</span><!-- ENDIF --></dt>
+  			<dd>{options.CONTENT}</dd>
+  		</dl>
+  
+--- 25,31 ----
+  	<!-- ELSE -->
+  
+  		<dl>
+! 			<dt><label for="{options.KEY}">{options.TITLE}{L_COLON}</label><!-- IF options.S_EXPLAIN --><br /><span>{options.TITLE_EXPLAIN}</span><!-- ENDIF --></dt>
+  			<dd>{options.CONTENT}</dd>
+  		</dl>
+  
+***************
+*** 33,41 ****
+  <!-- END options -->
+  
+  <!-- IF S_AUTH -->
+  	<!-- BEGIN auth_tpl -->
+! 		{auth_tpl.TPL}
+  	<!-- END auth_tpl -->
+  <!-- ENDIF -->
+  
+  	<p class="submit-buttons">
+--- 33,44 ----
+  <!-- END options -->
+  
+  <!-- IF S_AUTH -->
++ 	</fieldset>
+  	<!-- BEGIN auth_tpl -->
+! 		<!-- INCLUDE {auth_tpl.TEMPLATE_FILE} -->
+  	<!-- END auth_tpl -->
++ 	<fieldset>
++ 		<legend>{L_ACP_SUBMIT_CHANGES}</legend>
+  <!-- ENDIF -->
+  
+  	<p class="submit-buttons">

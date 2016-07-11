@@ -1,0 +1,54 @@
+*** includes/acp/acp_email.php	2013-09-28 15:40:10.000000000 +0200
+--- includes/acp/acp_email.php	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 314,332 ****
+  		$s_priority_options .= '<option value="' . MAIL_NORMAL_PRIORITY . '" selected="selected">' . $user->lang['MAIL_NORMAL_PRIORITY'] . '</option>';
+  		$s_priority_options .= '<option value="' . MAIL_HIGH_PRIORITY . '">' . $user->lang['MAIL_HIGH_PRIORITY'] . '</option>';
+  
+! 		$template->assign_vars(array(
+  			'S_WARNING'				=> (sizeof($error)) ? true : false,
+  			'WARNING_MSG'			=> (sizeof($error)) ? implode('<br />', $error) : '',
+  			'U_ACTION'				=> $this->u_action,
+  			'S_GROUP_OPTIONS'		=> $select_list,
+! 			'USERNAMES'				=> $usernames,
+  			'U_FIND_USERNAME'		=> append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=searchuser&amp;form=acp_email&amp;field=usernames'),
+  			'SUBJECT'				=> $subject,
+  			'MESSAGE'				=> $message,
+! 			'S_PRIORITY_OPTIONS'	=> $s_priority_options)
+  		);
+  
+  	}
+  }
+- 
+- ?>--- 361,391 ----
+  		$s_priority_options .= '<option value="' . MAIL_NORMAL_PRIORITY . '" selected="selected">' . $user->lang['MAIL_NORMAL_PRIORITY'] . '</option>';
+  		$s_priority_options .= '<option value="' . MAIL_HIGH_PRIORITY . '">' . $user->lang['MAIL_HIGH_PRIORITY'] . '</option>';
+  
+! 		$template_data = array(
+  			'S_WARNING'				=> (sizeof($error)) ? true : false,
+  			'WARNING_MSG'			=> (sizeof($error)) ? implode('<br />', $error) : '',
+  			'U_ACTION'				=> $this->u_action,
+  			'S_GROUP_OPTIONS'		=> $select_list,
+! 			'USERNAMES'				=> implode("\n", $usernames),
+  			'U_FIND_USERNAME'		=> append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=searchuser&amp;form=acp_email&amp;field=usernames'),
+  			'SUBJECT'				=> $subject,
+  			'MESSAGE'				=> $message,
+! 			'S_PRIORITY_OPTIONS'	=> $s_priority_options,
+  		);
+  
++ 		/**
++ 		* Modify custom email template data before we display the form
++ 		*
++ 		* @event core.acp_email_display
++ 		* @var	array	template_data		Array with template data assigned to email template
++ 		* @var	array	exclude				Array with groups which are excluded from group selection
++ 		* @var	array	usernames			Usernames which will be displayed in form
++ 		*
++ 		* @since 3.1.4-RC1
++ 		*/
++ 		$vars = array('template_data', 'exclude', 'usernames');
++ 		extract($phpbb_dispatcher->trigger_event('core.acp_email_display', compact($vars)));
++ 
++ 		$template->assign_vars($template_data);
+  	}
+  }

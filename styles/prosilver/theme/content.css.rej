@@ -1,0 +1,267 @@
+*** styles/prosilver/theme/content.css	2013-09-28 15:40:10.000000000 +0200
+--- styles/prosilver/theme/content.css	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 259,270 ****
+  }
+  
+  .postbody h3 img {
+- 	/* Also see tweaks.css */
+  	vertical-align: bottom;
+  }
+  
+  .postbody .content {
+  	font-size: 1.3em;
+  }
+  
+  .search .postbody {
+--- 263,287 ----
+  }
+  
+  .postbody h3 img {
+  	vertical-align: bottom;
+  }
+  
++ .has-profile .postbody h3 {
++ 	/* If there is a post-profile, we position the post-buttons differently */
++ 	float: none !important;
++ 	margin-right: 180px;
++ }
++ 
+  .postbody .content {
+  	font-size: 1.3em;
++ 	overflow-x: auto;
++ }
++ 
++ .postbody img.postimage {
++ 	max-width: 100%;
++ 	-webkit-box-sizing: border-box;
++ 	-moz-box-sizing: border-box;
++ 	box-sizing: border-box;
+  }
+  
+  .search .postbody {
+***************
+*** 476,503 ****
+  }
+  
+  /* Code block */
+! dl.codebox {
+  	padding: 3px;
+! 	background-color: #FFFFFF;
+! 	border: 1px solid #d8d8d8;
+  	font-size: 1em;
+  }
+  
+! dl.codebox dt {
+  	text-transform: uppercase;
+! 	border-bottom: 1px solid #CCCCCC;
+  	margin-bottom: 3px;
+! 	font-size: 0.8em;
+  	font-weight: bold;
+  	display: block;
+  }
+  
+! blockquote dl.codebox {
+  	margin-left: 0;
+  }
+  
+! dl.codebox code {
+! 	/* Also see tweaks.css */
+  	overflow: auto;
+  	display: block;
+  	height: auto;
+--- 477,502 ----
+  }
+  
+  /* Code block */
+! .codebox {
+  	padding: 3px;
+! 	border: 1px solid transparent;
+  	font-size: 1em;
+  }
+  
+! .codebox p {
+  	text-transform: uppercase;
+! 	border-bottom: 1px solid transparent;
+  	margin-bottom: 3px;
+! 	font-size: 0.8em !important;
+  	font-weight: bold;
+  	display: block;
+  }
+  
+! blockquote .codebox {
+  	margin-left: 0;
+  }
+  
+! .codebox code {
+  	overflow: auto;
+  	display: block;
+  	height: auto;
+***************
+*** 660,731 ****
+  fieldset.polls dd div {
+  	text-align: right;
+  	font-family: Arial, Helvetica, sans-serif;
+- 	color: #FFFFFF;
+  	font-weight: bold;
+  	padding: 0 2px;
+  	overflow: visible;
+! 	min-width: 2%;
+! }
+! 
+! .pollbar1 {
+! 	background-color: #aaaaaa;
+! 	border-bottom: 1px solid #747474;
+! 	border-right: 1px solid #747474;
+  }
+  
+! .pollbar2 {
+! 	background-color: #bebebe;
+! 	border-bottom: 1px solid #8c8c8c;
+! 	border-right: 1px solid #8c8c8c;
+  }
+  
+! .pollbar3 {
+! 	background-color: #D1D1D1;
+! 	border-bottom: 1px solid #aaaaaa;
+! 	border-right: 1px solid #aaaaaa;
+! }
+! 
+! .pollbar4 {
+! 	background-color: #e4e4e4;
+! 	border-bottom: 1px solid #bebebe;
+! 	border-right: 1px solid #bebebe;
+! }
+! 
+! .pollbar5 {
+! 	background-color: #f8f8f8;
+! 	border-bottom: 1px solid #D1D1D1;
+! 	border-right: 1px solid #D1D1D1;
+  }
+  
+  /* Poster profile block
+  ----------------------------------------*/
+  .postprofile {
+- 	/* Also see tweaks.css */
+  	margin: 5px 0 10px 0;
+  	min-height: 80px;
+! 	color: #666666;
+! 	border-left: 1px solid #FFFFFF;
+  	width: 22%;
+  	float: right;
+  	display: inline;
+  }
+- .pm .postprofile {
+- 	border-left: 1px solid #DDDDDD;
+- }
+  
+  .postprofile dd, .postprofile dt {
+  	line-height: 1.2em;
+  	margin-left: 8px;
+  }
+  
+  .postprofile strong {
+  	font-weight: normal;
+- 	color: #000000;
+  }
+  
+! .avatar {
+! 	border: none;
+  	margin-bottom: 3px;
+  }
+  
+  .online {
+--- 639,731 ----
+  fieldset.polls dd div {
+  	text-align: right;
+  	font-family: Arial, Helvetica, sans-serif;
+  	font-weight: bold;
+  	padding: 0 2px;
+  	overflow: visible;
+! 	min-width: 8px;
+  }
+  
+! .pollbar1, .pollbar2, .pollbar3, .pollbar4, .pollbar5 {
+! 	border-bottom: 1px solid transparent;
+! 	border-right: 1px solid transparent;
+  }
+  
+! .vote-submitted {
+! 	font-size: 1.2em;
+! 	font-weight: bold;
+! 	text-align: center;
+  }
+  
+  /* Poster profile block
+  ----------------------------------------*/
+  .postprofile {
+  	margin: 5px 0 10px 0;
+  	min-height: 80px;
+! 	border: 1px solid transparent;
+! 	border-width: 0 0 0 1px;
+  	width: 22%;
+  	float: right;
+  	display: inline;
+  }
+  
+  .postprofile dd, .postprofile dt {
+  	line-height: 1.2em;
+  	margin-left: 8px;
+  }
+  
++ .postprofile dd {
++ 	overflow: hidden;
++ 	text-overflow: ellipsis;
++ }
++ 
+  .postprofile strong {
+  	font-weight: normal;
+  }
+  
+! .postprofile dt.no-profile-rank, .postprofile dd.profile-rank, .postprofile .search-result-date {
+! 	margin-bottom: 10px;
+! }
+! 
+! /* Post-profile avatars */
+! .postprofile .has-avatar .avatar-container {
+  	margin-bottom: 3px;
++ 	overflow: hidden;
++ }
++ 
++ .postprofile .avatar {
++ 	display: block;
++ 	float: left;
++ 	max-width: 100%;
++ }
++ 
++ .postprofile .avatar img {
++ 	display: block;
++ 	height: auto !important;
++ 	max-width: 100%;
++ }
++ 
++ .postprofile .profile-posts a {
++ 	font-weight: normal;
++ }
++ 
++ dd.profile-warnings {
++ 	font-weight: bold;
++ }
++ 
++ dd.profile-contact {
++ 	overflow: visible;
++ }
++ 
++ .profile-contact .dropdown-container {
++ 	display: inline-block;
++ }
++ 
++ .profile-contact .icon_contact {
++ 	vertical-align: middle;
++ }
++ 
++ .profile-contact .dropdown {
++ 	margin-right: -14px;
+  }
+  
+  .online {

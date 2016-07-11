@@ -1,0 +1,35 @@
+*** search.php	2015-05-03 17:14:55.000000000 +0200
+--- search.php	2013-09-28 15:40:10.000000000 +0200
+***************
+*** 761,767 ****
+  		}
+  		else
+  		{
+! 			$text_only_message = '';
+  			$attach_list = array();
+  
+  			while ($row = $db->sql_fetchrow($result))
+--- 725,731 ----
+  		}
+  		else
+  		{
+! 			$bbcode_bitfield = $text_only_message = '';
+  			$attach_list = array();
+  
+  			while ($row = $db->sql_fetchrow($result))
+***************
+*** 781,786 ****
+  				if ($return_chars == -1 || utf8_strlen($text_only_message) < ($return_chars + 3))
+  				{
+  					$row['display_text_only'] = false;
+  
+  					// Does this post have an attachment? If so, add it to the list
+  					if ($row['post_attachment'] && $config['allow_attachments'])
+--- 745,751 ----
+  				if ($return_chars == -1 || utf8_strlen($text_only_message) < ($return_chars + 3))
+  				{
+  					$row['display_text_only'] = false;
++ 					$bbcode_bitfield = $bbcode_bitfield | base64_decode($row['bbcode_bitfield']);
+  
+  					// Does this post have an attachment? If so, add it to the list
+  					if ($row['post_attachment'] && $config['allow_attachments'])

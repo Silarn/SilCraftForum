@@ -1,0 +1,72 @@
+*** includes/functions_privmsgs.php	2015-05-03 17:14:55.000000000 +0200
+--- includes/functions_privmsgs.php	2013-09-28 15:40:10.000000000 +0200
+***************
+*** 1305,1313 ****
+  		$_types = array('u', 'g');
+  		foreach ($_types as $type)
+  		{
+! 			if (sizeof(${$type}))
+  			{
+! 				foreach (${$type} as $id)
+  				{
+  					$address[$type][$id] = $check_type;
+  				}
+--- 1195,1203 ----
+  		$_types = array('u', 'g');
+  		foreach ($_types as $type)
+  		{
+! 			if (sizeof($$type))
+  			{
+! 				foreach ($$type as $id)
+  				{
+  					$address[$type][$id] = $check_type;
+  				}
+***************
+*** 1894,1900 ****
+  */
+  function message_history($msg_id, $user_id, $message_row, $folder, $in_post_mode = false)
+  {
+! 	global $db, $user, $config, $template, $phpbb_root_path, $phpEx, $auth;
+  
+  	// Select all receipts and the author from the pm we currently view, to only display their pm-history
+  	$sql = 'SELECT author_id, user_id
+--- 1831,1837 ----
+  */
+  function message_history($msg_id, $user_id, $message_row, $folder, $in_post_mode = false)
+  {
+! 	global $db, $user, $config, $template, $phpbb_root_path, $phpEx, $auth, $bbcode;
+  
+  	// Select all receipts and the author from the pm we currently view, to only display their pm-history
+  	$sql = 'SELECT author_id, user_id
+***************
+*** 1946,1951 ****
+  	$title = $row['message_subject'];
+  
+  	$rowset = array();
+  	$folder_url = append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm') . '&amp;folder=';
+  
+  	do
+--- 1883,1889 ----
+  	$title = $row['message_subject'];
+  
+  	$rowset = array();
++ 	$bbcode_bitfield = '';
+  	$folder_url = append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm') . '&amp;folder=';
+  
+  	do
+***************
+*** 1961,1966 ****
+  		else
+  		{
+  			$rowset[$row['msg_id']] = $row;
+  		}
+  	}
+  	while ($row = $db->sql_fetchrow($result));
+--- 1899,1905 ----
+  		else
+  		{
+  			$rowset[$row['msg_id']] = $row;
++ 			$bbcode_bitfield = $bbcode_bitfield | base64_decode($row['bbcode_bitfield']);
+  		}
+  	}
+  	while ($row = $db->sql_fetchrow($result));

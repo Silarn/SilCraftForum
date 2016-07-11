@@ -1,0 +1,57 @@
+*** styles/prosilver/template/mcp_logs.html	2013-09-28 15:40:10.000000000 +0200
+--- styles/prosilver/template/mcp_logs.html	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 5,29 ****
+  <form method="post" id="mcp" action="{U_POST_ACTION}">
+  
+  <div class="panel">
+! 	<div class="inner"><span class="corners-top"><span></span></span>
+  
+! 	<ul class="linklist">
+! 		<li class="leftside">
+! 			{L_SEARCH_KEYWORDS}: <input type="text" class="inputbox autowidth" name="keywords" value="{S_KEYWORDS}" />&nbsp;<input type="submit" class="button2" name="filter" value="{L_SEARCH}" />
+! 		</li>
+! 		<li class="rightside pagination">
+! 			<!-- IF TOTAL -->{TOTAL} <!-- ENDIF -->
+! 			<!-- IF PAGE_NUMBER --><!-- IF PAGINATION --> &bull; <a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{PAGE_NUMBER}</a> &bull; <span>{PAGINATION}</span><!-- ELSE --> &bull; {PAGE_NUMBER}<!-- ENDIF --><!-- ENDIF -->
+! 		</li>
+! 	</ul>
+  
+! 	<table cellspacing="1" class="table1">
+  	<thead>
+  	<tr>
+! 		<th>{L_USERNAME}</th>
+! 		<th style="text-align: center">{L_IP}</th>
+! 		<th style="text-align: center">{L_TIME}</th>
+! 		<th>{L_ACTION}</th>
+  		<!-- IF S_CLEAR_ALLOWED --><th>{L_MARK}</th><!-- ENDIF -->
+  	</tr>
+  	</thead>
+--- 5,31 ----
+  <form method="post" id="mcp" action="{U_POST_ACTION}">
+  
+  <div class="panel">
+! 	<div class="inner">
+  
+! 	<div class="action-bar top">
+! 		{L_SEARCH_KEYWORDS}{L_COLON} <input type="search" class="inputbox autowidth" name="keywords" value="{S_KEYWORDS}" />&nbsp;<input type="submit" class="button2" name="filter" value="{L_SEARCH}" />
+! 		<div class="pagination">
+! 			{TOTAL}
+! 			<!-- IF .pagination --> 
+! 				<!-- INCLUDE pagination.html -->
+! 			<!-- ELSE --> 
+! 				 &bull; {PAGE_NUMBER}
+! 			<!-- ENDIF -->
+! 		</div>
+! 	</div>
+  
+! 	<table class="table1">
+  	<thead>
+  	<tr>
+! 		<th class="name">{L_USERNAME}</th>
+! 		<th class="center">{L_IP}</th>
+! 		<th class="center">{L_TIME}</th>
+! 		<th class="name">{L_ACTION}</th>
+  		<!-- IF S_CLEAR_ALLOWED --><th>{L_MARK}</th><!-- ENDIF -->
+  	</tr>
+  	</thead>

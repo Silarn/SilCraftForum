@@ -1,0 +1,19 @@
+*** includes/constants.php	2013-09-28 15:40:10.000000000 +0200
+--- includes/constants.php	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 28,34 ****
+  */
+  
+  // phpBB Version
+! define('PHPBB_VERSION', '3.0.12');
+  
+  // QA-related
+  // define('PHPBB_QA', 1);
+--- 31,37 ----
+  */
+  
+  // phpBB Version
+! define('PHPBB_VERSION', '3.1.4');
+  
+  // QA-related
+  // define('PHPBB_QA', 1);

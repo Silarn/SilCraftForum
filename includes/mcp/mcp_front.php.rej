@@ -1,0 +1,55 @@
+*** includes/mcp/mcp_front.php	2013-09-28 15:40:10.000000000 +0200
+--- includes/mcp/mcp_front.php	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 226,254 ****
+  						'AUTHOR_COLOUR'		=> get_username_string('colour', $row['author_id'], $row['author_name'], $row['author_colour']),
+  						'U_AUTHOR'			=> get_username_string('profile', $row['author_id'], $row['author_name'], $row['author_colour']),
+  
+! 						'FORUM_NAME'	=> (!$global_topic) ? $row['forum_name'] : $user->lang['GLOBAL_ANNOUNCEMENT'],
+  						'TOPIC_TITLE'	=> $row['topic_title'],
+  						'SUBJECT'		=> ($row['post_subject']) ? $row['post_subject'] : $user->lang['NO_SUBJECT'],
+  						'REPORT_TIME'	=> $user->format_date($row['report_time']),
+  						'POST_TIME'		=> $user->format_date($row['post_time']),
+  					));
+  				}
+  			}
+  
+! 			if ($total == 0)
+! 			{
+! 				$template->assign_vars(array(
+! 					'L_REPORTS_TOTAL'	=>	$user->lang['REPORTS_ZERO_TOTAL'],
+! 					'S_HAS_REPORTS'		=>	false)
+! 				);
+! 			}
+! 			else
+! 			{
+! 				$template->assign_vars(array(
+! 					'L_REPORTS_TOTAL'	=> ($total == 1) ? $user->lang['REPORT_TOTAL'] : sprintf($user->lang['REPORTS_TOTAL'], $total),
+! 					'S_HAS_REPORTS'		=> true)
+! 				);
+! 			}
+  		}
+  	}
+  
+--- 228,248 ----
+  						'AUTHOR_COLOUR'		=> get_username_string('colour', $row['author_id'], $row['author_name'], $row['author_colour']),
+  						'U_AUTHOR'			=> get_username_string('profile', $row['author_id'], $row['author_name'], $row['author_colour']),
+  
+! 						'FORUM_NAME'	=> $row['forum_name'],
+  						'TOPIC_TITLE'	=> $row['topic_title'],
+  						'SUBJECT'		=> ($row['post_subject']) ? $row['post_subject'] : $user->lang['NO_SUBJECT'],
+  						'REPORT_TIME'	=> $user->format_date($row['report_time']),
+  						'POST_TIME'		=> $user->format_date($row['post_time']),
++ 						'ATTACH_ICON_IMG'	=> ($auth->acl_get('u_download') && $auth->acl_get('f_download', $row['forum_id']) && $row['post_attachment']) ? $user->img('icon_topic_attach', $user->lang['TOTAL_ATTACHMENTS']) : '',
+  					));
+  				}
++ 				$db->sql_freeresult($result);
+  			}
+  
+! 			$template->assign_vars(array(
+! 				'L_REPORTS_TOTAL'	=> $user->lang('REPORTS_TOTAL', (int) $total),
+! 				'S_HAS_REPORTS'		=> ($total != 0),
+! 			));
+  		}
+  	}
+  

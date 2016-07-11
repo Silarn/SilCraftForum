@@ -1,0 +1,345 @@
+*** includes/functions_admin.php	2013-09-28 15:40:10.000000000 +0200
+--- includes/functions_admin.php	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 644,650 ****
+  		'posts' => ($call_delete_posts) ? delete_posts($where_type, $where_ids, false, true, $post_count_sync, false) : 0,
+  	);
+  
+! 	$sql = 'SELECT topic_id, forum_id, topic_approved, topic_moved_id
+  		FROM ' . TOPICS_TABLE . '
+  		WHERE ' . $where_clause;
+  	$result = $db->sql_query($sql);
+--- 643,649 ----
+  		'posts' => ($call_delete_posts) ? delete_posts($where_type, $where_ids, false, true, $post_count_sync, false) : 0,
+  	);
+  
+! 	$sql = 'SELECT topic_id, forum_id, topic_visibility, topic_moved_id
+  		FROM ' . TOPICS_TABLE . '
+  		WHERE ' . $where_clause;
+  	$result = $db->sql_query($sql);
+***************
+*** 654,660 ****
+  		$forum_ids[] = $row['forum_id'];
+  		$topic_ids[] = $row['topic_id'];
+  
+! 		if ($row['topic_approved'] && !$row['topic_moved_id'])
+  		{
+  			$approved_topics++;
+  		}
+--- 653,659 ----
+  		$forum_ids[] = $row['forum_id'];
+  		$topic_ids[] = $row['topic_id'];
+  
+! 		if ($row['topic_visibility'] == ITEM_APPROVED && !$row['topic_moved_id'])
+  		{
+  			$approved_topics++;
+  		}
+***************
+*** 672,677 ****
+  
+  	$table_ary = array(BOOKMARKS_TABLE, TOPICS_TRACK_TABLE, TOPICS_POSTED_TABLE, POLL_VOTES_TABLE, POLL_OPTIONS_TABLE, TOPICS_WATCH_TABLE, TOPICS_TABLE);
+  
+  	foreach ($table_ary as $table)
+  	{
+  		$sql = "DELETE FROM $table
+--- 671,690 ----
+  
+  	$table_ary = array(BOOKMARKS_TABLE, TOPICS_TRACK_TABLE, TOPICS_POSTED_TABLE, POLL_VOTES_TABLE, POLL_OPTIONS_TABLE, TOPICS_WATCH_TABLE, TOPICS_TABLE);
+  
++ 	/**
++ 	 * Perform additional actions before topic(s) deletion
++ 	 *
++ 	 * @event core.delete_topics_before_query
++ 	 * @var	array	table_ary	Array of tables from which all rows will be deleted that hold a topic_id occuring in topic_ids
++ 	 * @var	array	topic_ids	Array of topic ids to delete
++ 	 * @since 3.1.4-RC1
++ 	 */
++ 	$vars = array(
++ 			'table_ary',
++ 			'topic_ids',
++ 	);
++ 	extract($phpbb_dispatcher->trigger_event('core.delete_topics_before_query', compact($vars)));
++ 
+  	foreach ($table_ary as $table)
+  	{
+  		$sql = "DELETE FROM $table
+***************
+*** 680,685 ****
+  	}
+  	unset($table_ary);
+  
+  	$moved_topic_ids = array();
+  
+  	// update the other forums
+--- 693,710 ----
+  	}
+  	unset($table_ary);
+  
++ 	/**
++ 	 * Perform additional actions after topic(s) deletion
++ 	 *
++ 	 * @event core.delete_topics_after_query
++ 	 * @var	array	topic_ids	Array of topic ids that were deleted
++ 	 * @since 3.1.4-RC1
++ 	 */
++ 	$vars = array(
++ 			'topic_ids',
++ 	);
++ 	extract($phpbb_dispatcher->trigger_event('core.delete_topics_after_query', compact($vars)));
++ 
+  	$moved_topic_ids = array();
+  
+  	// update the other forums
+***************
+*** 715,720 ****
+  		set_config_count('num_topics', $approved_topics * (-1), true);
+  	}
+  
+  	return $return;
+  }
+  
+--- 740,753 ----
+  		set_config_count('num_topics', $approved_topics * (-1), true);
+  	}
+  
++ 	$phpbb_notifications = $phpbb_container->get('notification_manager');
++ 
++ 	$phpbb_notifications->delete_notifications(array(
++ 		'notification.type.topic',
++ 		'notification.type.approve_topic',
++ 		'notification.type.topic_in_queue',
++ 	), $topic_ids);
++ 
+  	return $return;
+  }
+  
+***************
+*** 723,729 ****
+  */
+  function delete_posts($where_type, $where_ids, $auto_sync = true, $posted_sync = true, $post_count_sync = true, $call_delete_topics = true)
+  {
+! 	global $db, $config, $phpbb_root_path, $phpEx;
+  
+  	if ($where_type === 'range')
+  	{
+--- 756,793 ----
+  */
+  function delete_posts($where_type, $where_ids, $auto_sync = true, $posted_sync = true, $post_count_sync = true, $call_delete_topics = true)
+  {
+! 	global $db, $config, $phpbb_root_path, $phpEx, $auth, $user, $phpbb_container, $phpbb_dispatcher;
+! 
+! 	// Notifications types to delete
+! 	$delete_notifications_types = array(
+! 		'notification.type.quote',
+! 		'notification.type.approve_post',
+! 		'notification.type.post_in_queue',
+! 	);
+! 
+! 	/**
+! 	* Perform additional actions before post(s) deletion
+! 	*
+! 	* @event core.delete_posts_before
+! 	* @var	string	where_type					Variable containing posts deletion mode
+! 	* @var	mixed	where_ids					Array or comma separated list of posts ids to delete
+! 	* @var	bool	auto_sync					Flag indicating if topics/forums should be synchronized
+! 	* @var	bool	posted_sync					Flag indicating if topics_posted table should be resynchronized
+! 	* @var	bool	post_count_sync				Flag indicating if posts count should be resynchronized
+! 	* @var	bool	call_delete_topics			Flag indicating if topics having no posts should be deleted
+! 	* @var	array	delete_notifications_types	Array with notifications types to delete
+! 	* @since 3.1.0-a4
+! 	*/
+! 	$vars = array(
+! 		'where_type',
+! 		'where_ids',
+! 		'auto_sync',
+! 		'posted_sync',
+! 		'post_count_sync',
+! 		'call_delete_topics',
+! 		'delete_notifications_types',
+! 	);
+! 	extract($phpbb_dispatcher->trigger_event('core.delete_posts_before', compact($vars)));
+  
+  	if ($where_type === 'range')
+  	{
+***************
+*** 767,773 ****
+  	$approved_posts = 0;
+  	$post_ids = $topic_ids = $forum_ids = $post_counts = $remove_topics = array();
+  
+! 	$sql = 'SELECT post_id, poster_id, post_approved, post_postcount, topic_id, forum_id
+  		FROM ' . POSTS_TABLE . '
+  		WHERE ' . $where_clause;
+  	$result = $db->sql_query($sql);
+--- 831,837 ----
+  	$approved_posts = 0;
+  	$post_ids = $topic_ids = $forum_ids = $post_counts = $remove_topics = array();
+  
+! 	$sql = 'SELECT post_id, poster_id, post_visibility, post_postcount, topic_id, forum_id
+  		FROM ' . POSTS_TABLE . '
+  		WHERE ' . $where_clause;
+  	$result = $db->sql_query($sql);
+***************
+*** 779,790 ****
+  		$topic_ids[] = (int) $row['topic_id'];
+  		$forum_ids[] = (int) $row['forum_id'];
+  
+! 		if ($row['post_postcount'] && $post_count_sync && $row['post_approved'])
+  		{
+  			$post_counts[$row['poster_id']] = (!empty($post_counts[$row['poster_id']])) ? $post_counts[$row['poster_id']] + 1 : 1;
+  		}
+  
+! 		if ($row['post_approved'])
+  		{
+  			$approved_posts++;
+  		}
+--- 843,854 ----
+  		$topic_ids[] = (int) $row['topic_id'];
+  		$forum_ids[] = (int) $row['forum_id'];
+  
+! 		if ($row['post_postcount'] && $post_count_sync && $row['post_visibility'] == ITEM_APPROVED)
+  		{
+  			$post_counts[$row['poster_id']] = (!empty($post_counts[$row['poster_id']])) ? $post_counts[$row['poster_id']] + 1 : 1;
+  		}
+  
+! 		if ($row['post_visibility'] == ITEM_APPROVED)
+  		{
+  			$approved_posts++;
+  		}
+***************
+*** 847,863 ****
+  	}
+  
+  	// Remove the message from the search index
+! 	$search_type = basename($config['search_type']);
+  
+! 	if (!file_exists($phpbb_root_path . 'includes/search/' . $search_type . '.' . $phpEx))
+  	{
+  		trigger_error('NO_SUCH_SEARCH_MODULE');
+  	}
+  
+- 	include_once("{$phpbb_root_path}includes/search/$search_type.$phpEx");
+- 
+  	$error = false;
+! 	$search = new $search_type($error);
+  
+  	if ($error)
+  	{
+--- 911,925 ----
+  	}
+  
+  	// Remove the message from the search index
+! 	$search_type = $config['search_type'];
+  
+! 	if (!class_exists($search_type))
+  	{
+  		trigger_error('NO_SUCH_SEARCH_MODULE');
+  	}
+  
+  	$error = false;
+! 	$search = new $search_type($error, $phpbb_root_path, $phpEx, $auth, $config, $db, $user);
+  
+  	if ($error)
+  	{
+***************
+*** 868,875 ****
+  
+  	delete_attachments('post', $post_ids, false);
+  
+  	$db->sql_transaction('commit');
+  
+  	// Resync topics_posted table
+  	if ($posted_sync)
+  	{
+--- 930,985 ----
+  
+  	delete_attachments('post', $post_ids, false);
+  
++ 	/**
++ 	* Perform additional actions during post(s) deletion
++ 	*
++ 	* @event core.delete_posts_in_transaction
++ 	* @var	array	post_ids					Array with deleted posts' ids
++ 	* @var	array	poster_ids					Array with deleted posts' author ids
++ 	* @var	array	topic_ids					Array with deleted posts' topic ids
++ 	* @var	array	forum_ids					Array with deleted posts' forum ids
++ 	* @var	string	where_type					Variable containing posts deletion mode
++ 	* @var	mixed	where_ids					Array or comma separated list of posts ids to delete
++ 	* @var	array	delete_notifications_types	Array with notifications types to delete
++ 	* @since 3.1.0-a4
++ 	*/
++ 	$vars = array(
++ 		'post_ids',
++ 		'poster_ids',
++ 		'topic_ids',
++ 		'forum_ids',
++ 		'where_type',
++ 		'where_ids',
++ 		'delete_notifications_types',
++ 	);
++ 	extract($phpbb_dispatcher->trigger_event('core.delete_posts_in_transaction', compact($vars)));
++ 
+  	$db->sql_transaction('commit');
+  
++ 	/**
++ 	* Perform additional actions after post(s) deletion
++ 	*
++ 	* @event core.delete_posts_after
++ 	* @var	array	post_ids					Array with deleted posts' ids
++ 	* @var	array	poster_ids					Array with deleted posts' author ids
++ 	* @var	array	topic_ids					Array with deleted posts' topic ids
++ 	* @var	array	forum_ids					Array with deleted posts' forum ids
++ 	* @var	string	where_type					Variable containing posts deletion mode
++ 	* @var	mixed	where_ids					Array or comma separated list of posts ids to delete
++ 	* @var	array	delete_notifications_types	Array with notifications types to delete
++ 	* @since 3.1.0-a4
++ 	*/
++ 	$vars = array(
++ 		'post_ids',
++ 		'poster_ids',
++ 		'topic_ids',
++ 		'forum_ids',
++ 		'where_type',
++ 		'where_ids',
++ 		'delete_notifications_types',
++ 	);
++ 	extract($phpbb_dispatcher->trigger_event('core.delete_posts_after', compact($vars)));
++ 
+  	// Resync topics_posted table
+  	if ($posted_sync)
+  	{
+***************
+*** 883,889 ****
+  		sync('forum', 'forum_id', $forum_ids, true, true);
+  	}
+  
+! 	if ($approved_posts)
+  	{
+  		set_config_count('num_posts', $approved_posts * (-1), true);
+  	}
+--- 993,999 ----
+  		sync('forum', 'forum_id', $forum_ids, true, true);
+  	}
+  
+! 	if ($approved_posts && $post_count_sync)
+  	{
+  		set_config_count('num_posts', $approved_posts * (-1), true);
+  	}
+***************
+*** 894,899 ****
+  		delete_topics('topic_id', $remove_topics, $auto_sync, $post_count_sync, false);
+  	}
+  
+  	return sizeof($post_ids);
+  }
+  
+--- 1004,1013 ----
+  		delete_topics('topic_id', $remove_topics, $auto_sync, $post_count_sync, false);
+  	}
+  
++ 	$phpbb_notifications = $phpbb_container->get('notification_manager');
++ 
++ 	$phpbb_notifications->delete_notifications($delete_notifications_types, $post_ids);
++ 
+  	return sizeof($post_ids);
+  }
+  

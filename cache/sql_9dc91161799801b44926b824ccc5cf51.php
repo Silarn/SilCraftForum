@@ -1,0 +1,5 @@
+<?php exit; ?>
+1468199702
+SELECT ban_ip, ban_userid, ban_email, ban_exclude, ban_give_reason, ban_end FROM phpbb_banlist WHERE ban_email = '' AND (ban_userid = 1 OR ban_ip <> '')
+715
+a:4:{i:0;a:6:{s:6:"ban_ip";s:11:"97.91.96.16";s:10:"ban_userid";s:1:"0";s:9:"ban_email";s:0:"";s:11:"ban_exclude";s:1:"0";s:15:"ban_give_reason";s:4:"Spam";s:7:"ban_end";s:1:"0";}i:1;a:6:{s:6:"ban_ip";s:11:"97.91.96.16";s:10:"ban_userid";s:1:"0";s:9:"ban_email";s:0:"";s:11:"ban_exclude";s:1:"0";s:15:"ban_give_reason";s:4:"Spam";s:7:"ban_end";s:1:"0";}i:2;a:6:{s:6:"ban_ip";s:14:"120.40.157.134";s:10:"ban_userid";s:1:"0";s:9:"ban_email";s:0:"";s:11:"ban_exclude";s:1:"0";s:15:"ban_give_reason";s:7:"bye bot";s:7:"ban_end";s:1:"0";}i:3;a:6:{s:6:"ban_ip";s:15:"126.114.230.199";s:10:"ban_userid";s:1:"0";s:9:"ban_email";s:0:"";s:11:"ban_exclude";s:1:"0";s:15:"ban_give_reason";s:7:"bye bot";s:7:"ban_end";s:1:"0";}}

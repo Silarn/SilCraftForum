@@ -1,0 +1,30 @@
+*** includes/mcp/mcp_main.php	2013-09-28 15:40:10.000000000 +0200
+--- includes/mcp/mcp_main.php	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 1301,1312 ****
+  
+  					$db->sql_query('INSERT INTO ' . POLL_OPTIONS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary));
+  				}
+  			}
+  
+  			$sql = 'SELECT *
+  				FROM ' . POSTS_TABLE . "
+  				WHERE topic_id = $topic_id
+! 				ORDER BY post_time ASC";
+  			$result = $db->sql_query($sql);
+  
+  			$post_rows = array();
+--- 1472,1484 ----
+  
+  					$db->sql_query('INSERT INTO ' . POLL_OPTIONS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary));
+  				}
++ 				$db->sql_freeresult($result);
+  			}
+  
+  			$sql = 'SELECT *
+  				FROM ' . POSTS_TABLE . "
+  				WHERE topic_id = $topic_id
+! 				ORDER BY post_time ASC, post_id ASC";
+  			$result = $db->sql_query($sql);
+  
+  			$post_rows = array();

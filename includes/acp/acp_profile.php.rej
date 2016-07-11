@@ -1,0 +1,37 @@
+*** includes/acp/acp_profile.php	2013-09-28 15:40:10.000000000 +0200
+--- includes/acp/acp_profile.php	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 461,480 ****
+  
+  					if (!$cp->vars[$key] && $action == 'edit')
+  					{
+! 						$cp->vars[$key] = $$key;
+  					}
+- 					else if ($key == 'l_lang_options' && $field_type == FIELD_BOOL)
+- 					{
+- 						$cp->vars[$key] = utf8_normalize_nfc(request_var($key, array(0 => array('')), true));
+- 					}
+- 					else if ($key == 'l_lang_options' && is_array($cp->vars[$key]))
+- 					{
+- 						foreach ($cp->vars[$key] as $lang_id => $options)
+- 						{
+- 							$cp->vars[$key][$lang_id] = explode("\n", $options);
+- 						}
+  
+! 					}
+  				}
+  
+  				// Check for general issues in every step
+--- 333,344 ----
+  
+  					if (!$cp->vars[$key] && $action == 'edit')
+  					{
+! 						$cp->vars[$key] = ${$key};
+  					}
+  
+! 					$field_data = $cp->vars;
+! 					$var = $profile_field->get_excluded_options($key, $action, $var, $field_data, 3);
+! 					$cp->vars = $field_data;
+  				}
+  
+  				// Check for general issues in every step

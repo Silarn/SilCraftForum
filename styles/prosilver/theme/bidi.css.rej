@@ -1,0 +1,381 @@
+*** styles/prosilver/theme/bidi.css	2013-09-28 15:40:10.000000000 +0200
+--- styles/prosilver/theme/bidi.css	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 182,189 ****
+  
+  /* Misc layout styles
+  ---------------------------------------- */
+! /* column[1-2] styles are containers for two column layouts 
+!    Also see tweaks.css */
+  .rtl .column1 {
+  	float: right;
+  	clear: right;
+--- 238,244 ----
+  
+  /* Misc layout styles
+  ---------------------------------------- */
+! /* column[1-2] styles are containers for two column layouts */
+  .rtl .column1 {
+  	float: right;
+  	clear: right;
+***************
+*** 603,647 ****
+  /**
+  * buttons.css
+  */
+! /* Rollover buttons
+!    Based on: http://wellstyled.com/css-nopreload-rollovers.html
+! ----------------------------------------*/
+! .rtl .buttons {
+! 	float: right;
+  }
+  
+! /* Rollover state */
+! .rtl .buttons div {
+! 	margin: 0 1px 0 5px;
+  }
+  
+! /* Sub-header (navigation bar)
+! --------------------------------------------- */
+! .rtl a.print, .rtl a.sendemail, .rtl a.fontsize {
+! 	text-align: right;
+  }
+  
+  /* Icon images
+  ---------------------------------------- */
+! .rtl .sitehome, .rtl .icon-faq, .rtl .icon-members, .rtl .icon-home, .rtl .icon-ucp, .rtl .icon-register, .rtl .icon-logout,
+! .rtl .icon-bookmark, .rtl .icon-bump, .rtl .icon-subscribe, .rtl .icon-unsubscribe, .rtl .icon-pages, .rtl .icon-search {
+  	background-position: 100% 50%;
+- 	padding: 1px 17px 0 0;
+  }
+  
+! /* Poster profile icons
+! ----------------------------------------*/
+! /* Rollover state */
+! .rtl .postprofile ul.profile-icons li {
+! 	float: right;
+! 	margin: 0 0 3px 6px;
+  }
+  
+! /* Positioning of moderator icons */
+! .rtl .postbody ul.profile-icons {
+  	float: left;
+  }
+  
+  /**
+  * cp.css
+  */
+--- 728,809 ----
+  /**
+  * buttons.css
+  */
+! .rtl .dropdown-select {
+! 	padding-left: 24px;
+! 	padding-right: 8px;
+  }
+  
+! .rtl .icon-button:before {
+! 	float: left;
+! 	margin-left: 0;
+! 	margin-right: 2px;
+  }
+  
+! .rtl .dropdown-select.icon-button:before {
+! 	margin-left: 4px;
+! 	margin-right: 0;
+! }
+! 
+! .rtl .dropdown-select:after {
+! 	border-left: 0;
+! 	border-right-style: solid;
+! 	border-right-width: 1px;
+! 	left: 0;
+! 	right: auto;
+! }
+! 
+! .rtl .buttons, .rtl .buttons .button {
+! 	float: right;
+! }
+! 
+! .rtl .buttons .button, .rtl .dropdown-select {
+! 	margin-left: 5px;
+! 	margin-right: 0;
+  }
+  
+  /* Icon images
+  ---------------------------------------- */
+! .rtl .small-icon {
+  	background-position: 100% 50%;
+  }
+  
+! .rtl .small-icon > a {
+! 	padding-left: 0;
+! 	padding-right: 19px;
+  }
+  
+! /* Post control buttons
+! --------------------------------------------- */
+! .rtl .post-buttons {
+  	float: left;
+  }
+  
++ .rtl .has-profile .post-buttons {
++ 	left: 0;
++ 	right: auto;
++ }
++ 
++ .rtl .post-buttons li {
++ 	float: right;
++ }
++ 
++ .post-buttons .icon-button:before {
++ 	margin-right: 0;
++ }
++ 
++ /* Poster contact icons
++  ----------------------------------------*/
++ .rtl .contact-icons a {
++ 	border-left-width: 1px;
++ 	border-left-style: dotted;
++ 	border-right: none;
++ 	float: right;
++ }
++ 
++ .rtl .contact-icons .last-cell {
++ 	border-left: none;
++ }
++ 
+  /**
+  * cp.css
+  */
+***************
+*** 903,929 ****
+  	float: left;
+  }
+  
+! /* Form button styles
+  ---------------------------------------- */
+  
+  /* Topic and forum Search */
+  .rtl .search-box {
+- 	margin-right: 5px;
+- 	margin-left: 0;
+  	float: right;
+  }
+  
+  .rtl input.search {
+  	background-position: right 1px;
+  	padding-right: 17px;
+  	padding-left: 0;
+  }
+  
+! /**
+! * tweaks.css
+! */
+  
+  /** Reference: Bug #27155 */
+  .rtl #wrap, .rtl .headerbar, .rtl #site-description, .rtl .navbar {
+  	position: relative;
+  }
+--- 1098,1298 ----
+  	float: left;
+  }
+  
+! /* Search box
+  ---------------------------------------- */
+  
+  /* Topic and forum Search */
+  .rtl .search-box {
+  	float: right;
+  }
+  
++ .rtl .search-box .inputbox {
++ 	border-left-width: 0;
++ 	border-right-width: 1px;
++ 	border-radius: 0 4px 4px 0;
++ 	float: right;
++ 	padding: 3px;
++ }
++ 
++ .rtl .search-box .button {
++ 	float: right;
++ }
++ 
++ .rtl .search-box a.button {
++ 	border-left-width: 1px;
++ 	border-right-width: 0;
++ 	border-radius: 4px 0 0 4px;
++ 	padding-left: 5px;
++ 	padding-right: 3px;
++ }
++ 
++ .rtl .search-header {
++ 	float: left;
++ 	margin-right: 0;
++ 	margin-left: 5px;
++ }
++ 
+  .rtl input.search {
+  	background-position: right 1px;
+  	padding-right: 17px;
+  	padding-left: 0;
+  }
+  
+! 
+! /* Form button styles
+! ---------------------------------------- */
+  
+  /** Reference: Bug #27155 */
+  .rtl #wrap, .rtl .headerbar, .rtl #site-description, .rtl .navbar {
+  	position: relative;
+  }
++ 
++ /* Former imageset */
++ .rtl .imageset.forum_link, .rtl .imageset.forum_read, .rtl .imageset.forum_read_locked, .rtl .imageset.forum_read_subforum, .rtl .imageset.forum_unread, .rtl .imageset.forum_unread_locked, .rtl .imageset.forum_unread_subforum, .rtl .imageset.topic_moved, .rtl .imageset.topic_read, .rtl .imageset.topic_read_mine, .rtl .imageset.topic_read_hot, .rtl .imageset.topic_read_hot_mine, .rtl .imageset.topic_read_locked, .rtl .imageset.topic_read_locked_mine, .rtl .imageset.topic_unread, .rtl .imageset.topic_unread_mine, .rtl .imageset.topic_unread_hot, .rtl .imageset.topic_unread_hot_mine, .rtl .imageset.topic_unread_locked, .rtl .imageset.topic_unread_locked_mine, .rtl .imageset.sticky_read, .rtl .imageset.sticky_read_mine, .rtl .imageset.sticky_read_locked, .rtl .imageset.sticky_read_locked_mine, .rtl .imageset.sticky_unread, .rtl .imageset.sticky_unread_mine, .rtl .imageset.sticky_unread_locked, .rtl .imageset.sticky_unread_locked_mine, .rtl .imageset.announce_read, .rtl .imageset.announce_read_mine, .rtl .imageset.announce_read_locked, .rtl .imageset.announce_read_locked_mine, .rtl .imageset.announce_unread, .rtl .imageset.announce_unread_mine, .rtl .imageset.announce_unread_locked, .rtl .imageset.announce_unread_locked_mine, .rtl .imageset.global_read, .rtl .imageset.global_read_mine, .rtl .imageset.global_read_locked, .rtl .imageset.global_read_locked_mine, .rtl .imageset.global_unread, .rtl .imageset.global_unread_mine, .rtl .imageset.global_unread_locked, .rtl .imageset.global_unread_locked_mine, .rtl .imageset.pm_read, .rtl .imageset.pm_unread {
++ 	padding-right: 27px;
++ 	padding-left: 0;
++ }
++ .rtl .imageset.subforum_read, .rtl .imageset.subforum_unread, .rtl .imageset.icon_post_target, .rtl .imageset.icon_post_target_unread, .rtl .imageset.icon_topic_latest, .rtl .imageset.icon_topic_newest {
++ 	padding-right: 11px;
++ 	padding-left: 0;
++ }
++ .rtl .imageset.icon_back_top {
++ 	padding-right: 11px;
++ 	padding-left: 0;
++ }
++ .rtl .imageset.icon_contact_aim, .rtl .imageset.phpbb_aol-icon, .rtl .imageset.icon_contact_email, .rtl .imageset.icon_contact_icq, .rtl .imageset.phpbb_icq-icon, .rtl .imageset.icon_contact_jabber, .rtl .imageset.icon_contact_msnm, .rtl .imageset.phpbb_wlm-icon, .rtl .imageset.icon_contact_www, .rtl .imageset.phpbb_website-icon, .rtl .imageset.icon_contact_yahoo, .rtl .imageset.phpbb_yahoo-icon, .rtl .imageset.icon_post_delete, .rtl .imageset.icon_post_info, .rtl .imageset.icon_post_report, .rtl .imageset.icon_user_warn {
++ 	padding-right: 20px;
++ 	padding-left: 0;
++ }
++ .rtl .imageset.icon_topic_attach {
++ 	padding-right: 7px;
++ 	padding-left: 0;
++ }
++ .rtl .imageset.icon_topic_reported, .rtl .imageset.icon_topic_unapproved {
++ 	padding-right: 16px;
++ 	padding-left: 0;
++ }
++ 
++ /**
++ * plupload.css
++ */
++ 
++ .rtl .attach-controls {
++ 	float: left;
++ }
++ 
++ /**
++ * responsive.css
++ */
++ @media only screen and (max-width: 700px), only screen and (max-device-width: 700px)
++ {
++ 	/* .topiclist lists
++ 	----------------------------------------*/
++ 	.rtl ul.topiclist li.header dt, .rtl ul.topiclist li.header dt .list-inner {
++ 		margin-left: 0 !important;
++ 		padding-left: 0;
++ 	}
++ 
++ 	.rtl ul.topiclist dt, .rtl ul.topiclist dt .list-inner,
++ 	.rtl ul.topiclist.missing-column dt, .rtl ul.topiclist.missing-column dt .list-inner,
++ 	.rtl ul.topiclist.two-long-columns dt, .rtl ul.topiclist.two-long-columns dt .list-inner,
++ 	.rtl ul.topiclist.two-columns dt, .rtl ul.topiclist.two-columns dt .list-inner {
++ 		margin-left: 0;
++ 	}
++ 
++ 	.rtl ul.topiclist dt .list-inner.with-mark {
++ 		padding-left: 34px;
++ 	}
++ 
++ 	/* Forums and topics lists
++ 	----------------------------------------*/
++ 	.rtl ul.topiclist.forums dt {
++ 		margin-left: -250px;
++ 	}
++ 	.rtl ul.topiclist.forums dt .list-inner {
++ 		margin-left: 250px;
++ 	}
++ 
++ 	.rtl ul.topiclist dd.mark {
++ 		left: 5px;
++ 		right: auto;
++ 		text-align: right;
++ 	}
++ 
++ 	.rtl table.responsive.show-header thead, .rtl table.responsive.show-header th:first-child {
++ 		text-align: right !important;
++ 	}
++ 
++ 	.rtl table.responsive td {
++ 		text-align: right !important;
++ 	}
++ 
++ 	/* User profile
++ 	----------------------------------------*/
++ 	.rtl .column1, .rtl .column2, .rtl .left-box.profile-details {
++ 		float: none;
++ 	}
++ 
++ 	/* Post
++ 	----------------------------------------*/
++ 	.rtl .postprofile, .rtl .postbody, .rtl .search .postbody {
++ 		float: none;
++ 	}
++ 
++ 	.rtl .post .postprofile {
++ 		border-width: 0 0 1px 0;
++ 	}
++ 
++ 	.rtl .postprofile dt, .rtl .postprofile dd.profile-rank, .rtl .search .postprofile dd {
++ 		margin: 0;
++ 	}
++ 
++ 	.rtl .postprofile .avatar {
++ 		margin-left: 5px;
++ 		margin-right: 0;
++ 	}
++ 
++ 	.rtl .has-profile .post-buttons {
++ 		left: 20px;
++ 	}
++ 
++ 	/* Forms
++ 	----------------------------------------*/
++ 	.rtl fieldset dt, .rtl fieldset.fields1 dt, .rtl fieldset.fields2 dt {
++ 		float: none;
++ 	}
++ 
++ 	.rtl fieldset dd, .rtl fieldset.fields1 dd, .rtl fieldset.fields2 dd {
++ 		margin-right: 20px;
++ 	}
++ }
++ 
++ @media only screen and (max-width: 550px), only screen and (max-device-width: 550px)
++ {
++ 	/* .topiclist lists
++ 	----------------------------------------*/
++ 	.rtl ul.topiclist.forums dt {
++ 		margin-left: 0;
++ 	}
++ 
++ 	.rtl ul.topiclist.forums dt .list-inner {
++ 		margin-left: 0;
++ 	}
++ }
++ 
++ @media only screen and (max-width: 500px), only screen and (max-device-width: 500px)
++ {
++ 	.rtl dl.details dt, .rtl dl.details dd {
++ 		float: none;
++ 		text-align: right;
++ 	}
++ 
++ 	.rtl dl.details dd {
++ 		margin-left: 0;
++ 		margin-right: 20px;
++ 	}
++ 
++ 	.captcha-panel dd.captcha {
++ 		margin-right: 0;
++ 	}
++ }

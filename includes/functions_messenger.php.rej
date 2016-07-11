@@ -1,0 +1,19 @@
+*** includes/functions_messenger.php	2015-05-03 17:14:55.000000000 +0200
+--- includes/functions_messenger.php	2013-09-28 15:40:10.000000000 +0200
+***************
+*** 509,515 ****
+  
+  			foreach ($address_ary as $which_ary)
+  			{
+! 				${$type} .= ((${$type} != '') ? ', ' : '') . (($which_ary['name'] != '') ? mail_encode($which_ary['name'], $encode_eol) . ' <' . $which_ary['email'] . '>' : $which_ary['email']);
+  			}
+  		}
+  
+--- 508,514 ----
+  
+  			foreach ($address_ary as $which_ary)
+  			{
+! 				$$type .= (($$type != '') ? ', ' : '') . (($which_ary['name'] != '') ? mail_encode($which_ary['name'], $encode_eol) . ' <' . $which_ary['email'] . '>' : $which_ary['email']);
+  			}
+  		}
+  

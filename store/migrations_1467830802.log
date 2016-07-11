@@ -1,0 +1,710 @@
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\m_pm_report.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v316rc1.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\v316rc1.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\v316rc1; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\m_pm_report.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v316rc1.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\v316rc1.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\v316rc1; Time: 0.02 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\m_pm_report.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\m_pm_report.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\m_pm_report; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\m_pm_report.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\m_pm_report.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\m_pm_report; Time: 0.14 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v316.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\v316.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\v316; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v316.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\v316.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\v316; Time: 0.02 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317rc1.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\v317rc1.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\v317rc1; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317rc1.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\v317rc1.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\v317rc1; Time: 0.01 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\v317.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\v317; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\v317.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\v317; Time: 0.02 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\increase_size_of_dateformat; Time: 0.57 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\increase_size_of_dateformat; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317pl1.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\v317pl1.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\v317pl1; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v317pl1.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\v317pl1.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\v317pl1; Time: 0.01 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\v318rc1.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\v318rc1; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\v318rc1.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\v318rc1; Time: 0.01 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\v318.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\v318; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\v318.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\v318; Time: 0.14 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\v319rc1.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\v319rc1; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319rc1.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\v319rc1.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\v319rc1; Time: 0.01 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\v319.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\v319; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_2_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\profile_fields_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\characters_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_1
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_schema
+[DEBUG] Migration already effectively installed (skipped): \paybas\pbwow\migrations\release_3_0_0_data
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_4
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_5
+[DEBUG] Migration already effectively installed (skipped): \paybas\recenttopics\migrations\release_2_0_6
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpcleanup\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\acpimport\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\split_ucp_module_settings
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_create_filesystem
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_add_bbcode
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\core\migrations\release_1_2_0_db_create
+[DEBUG] Migration already effectively installed (skipped): \phpbbgallery\exif\migrations\m1_init
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_1_data
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_0_0
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v2xx\release_2_1_0_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_schema
+[DEBUG] Migration already effectively installed (skipped): \vse\topicpreview\migrations\v1xx\release_1_0_6_data
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v319.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\v319.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\v319; Time: 0.01 seconds

@@ -1,0 +1,142 @@
+*** includes/ucp/ucp_register.php	2013-09-28 15:40:10.000000000 +0200
+--- includes/ucp/ucp_register.php	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 30,47 ****
+  	function main($id, $mode)
+  	{
+  		global $config, $db, $user, $auth, $template, $phpbb_root_path, $phpEx;
+  
+  		//
+! 		if ($config['require_activation'] == USER_ACTIVATION_DISABLE)
+  		{
+  			trigger_error('UCP_REGISTER_DISABLE');
+  		}
+  
+! 		include($phpbb_root_path . 'includes/functions_profile_fields.' . $phpEx);
+! 
+! 		$coppa			= (isset($_REQUEST['coppa'])) ? ((!empty($_REQUEST['coppa'])) ? 1 : 0) : false;
+! 		$agreed			= (!empty($_POST['agreed'])) ? 1 : 0;
+! 		$submit			= (isset($_POST['submit'])) ? true : false;
+  		$change_lang	= request_var('change_lang', '');
+  		$user_lang		= request_var('lang', $user->lang_name);
+  
+--- 32,49 ----
+  	function main($id, $mode)
+  	{
+  		global $config, $db, $user, $auth, $template, $phpbb_root_path, $phpEx;
++ 		global $request, $phpbb_container, $phpbb_dispatcher;
+  
+  		//
+! 		if ($config['require_activation'] == USER_ACTIVATION_DISABLE ||
+! 			(in_array($config['require_activation'], array(USER_ACTIVATION_SELF, USER_ACTIVATION_ADMIN)) && !$config['email_enable']))
+  		{
+  			trigger_error('UCP_REGISTER_DISABLE');
+  		}
+  
+! 		$coppa			= $request->is_set('coppa') ? (int) $request->variable('coppa', false) : false;
+! 		$agreed			= $request->variable('agreed', false);
+! 		$submit			= $request->is_set_post('submit');
+  		$change_lang	= request_var('change_lang', '');
+  		$user_lang		= request_var('lang', $user->lang_name);
+  
+***************
+*** 180,206 ****
+  			return;
+  		}
+  
+! 
+! 		// The CAPTCHA kicks in here. We can't help that the information gets lost on language change. 
+  		if ($config['enable_confirm'])
+  		{
+! 			include($phpbb_root_path . 'includes/captcha/captcha_factory.' . $phpEx);
+! 			$captcha =& phpbb_captcha_factory::get_instance($config['captcha_plugin']);
+  			$captcha->init(CONFIRM_REG);
+  		}
+  
+- 		$is_dst = $config['board_dst'];
+  		$timezone = $config['board_timezone'];
+  
+  		$data = array(
+  			'username'			=> utf8_normalize_nfc(request_var('username', '', true)),
+! 			'new_password'		=> request_var('new_password', '', true),
+! 			'password_confirm'	=> request_var('password_confirm', '', true),
+  			'email'				=> strtolower(request_var('email', '')),
+- 			'email_confirm'		=> strtolower(request_var('email_confirm', '')),
+  			'lang'				=> basename(request_var('lang', $user->lang_name)),
+! 			'tz'				=> request_var('tz', (float) $timezone),
+  		);
+  
+  		// Check and initialize some variables if needed
+  		if ($submit)
+--- 204,239 ----
+  			return;
+  		}
+  
+! 		// The CAPTCHA kicks in here. We can't help that the information gets lost on language change.
+  		if ($config['enable_confirm'])
+  		{
+! 			$captcha = $phpbb_container->get('captcha.factory')->get_instance($config['captcha_plugin']);
+  			$captcha->init(CONFIRM_REG);
+  		}
+  
+  		$timezone = $config['board_timezone'];
+  
+  		$data = array(
+  			'username'			=> utf8_normalize_nfc(request_var('username', '', true)),
+! 			'new_password'		=> $request->variable('new_password', '', true),
+! 			'password_confirm'	=> $request->variable('password_confirm', '', true),
+  			'email'				=> strtolower(request_var('email', '')),
+  			'lang'				=> basename(request_var('lang', $user->lang_name)),
+! 			'tz'				=> request_var('tz', $timezone),
+  		);
++ 		/**
++ 		* Add UCP register data before they are assigned to the template or submitted
++ 		*
++ 		* To assign data to the template, use $template->assign_vars()
++ 		*
++ 		* @event core.ucp_register_data_before
++ 		* @var	bool	submit		Do we display the form only
++ 		*							or did the user press submit
++ 		* @var	array	data		Array with current ucp registration data
++ 		* @since 3.1.4-RC1
++ 		*/
++ 		$vars = array('submit', 'data');
++ 		extract($phpbb_dispatcher->trigger_event('core.ucp_register_data_before', compact($vars)));
+  
+  		// Check and initialize some variables if needed
+  		if ($submit)
+***************
+*** 260,271 ****
+  				{
+  					$error[] = $user->lang['NEW_PASSWORD_ERROR'];
+  				}
+- 
+- 				if ($data['email'] != $data['email_confirm'])
+- 				{
+- 					$error[] = $user->lang['NEW_EMAIL_ERROR'];
+- 				}
+  			}
+  
+  			if (!sizeof($error))
+  			{
+--- 292,311 ----
+  				{
+  					$error[] = $user->lang['NEW_PASSWORD_ERROR'];
+  				}
+  			}
++ 			/**
++ 			* Check UCP registration data after they are submitted
++ 			*
++ 			* @event core.ucp_register_data_after
++ 			* @var	bool	submit		Do we display the form only
++ 			*							or did the user press submit
++ 			* @var	array 	data		Array with current ucp registration data
++ 			* @var	array	cp_data		Array with custom profile fields data
++ 			* @var	array 	error		Array with list of errors
++ 			* @since 3.1.4-RC1
++ 			*/
++ 			$vars = array('submit', 'data', 'cp_data', 'error');
++ 			extract($phpbb_dispatcher->trigger_event('core.ucp_register_data_after', compact($vars)));
+  
+  			if (!sizeof($error))
+  			{

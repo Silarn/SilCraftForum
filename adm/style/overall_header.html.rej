@@ -1,0 +1,49 @@
+*** adm/style/overall_header.html	2013-09-28 15:40:10.000000000 +0200
+--- adm/style/overall_header.html	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 1,25 ****
+! <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+! <html xmlns="http://www.w3.org/1999/xhtml" dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}" xml:lang="{S_USER_LANG}">
+  <head>
+! 
+! <meta http-equiv="Content-Type" content="text/html; charset={S_CONTENT_ENCODING}" />
+! <meta http-equiv="Content-Style-Type" content="text/css" />
+! <meta http-equiv="Content-Language" content="{S_USER_LANG}" />
+! <meta http-equiv="imagetoolbar" content="no" />
+  <!-- IF META -->{META}<!-- ENDIF -->
+  <title>{PAGE_TITLE}</title>
+  
+! <link href="style/admin.css" rel="stylesheet" type="text/css" media="screen" />
+  
+  <script type="text/javascript">
+  // <![CDATA[
+! var jump_page = '{LA_JUMP_PAGE}:';
+! var on_page = '{ON_PAGE}';
+  var per_page = '{PER_PAGE}';
+! var base_url = '{A_BASE_URL}';
+! 
+! var menu_state = 'shown';
+! 
+  
+  /**
+  * Jump to page
+--- 1,19 ----
+! <!DOCTYPE html>
+! <html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
+  <head>
+! <meta charset="utf-8">
+! <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- IF META -->{META}<!-- ENDIF -->
+  <title>{PAGE_TITLE}</title>
+  
+! <link href="style/admin.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" type="text/css" media="screen" />
+  
+  <script type="text/javascript">
+  // <![CDATA[
+! var jump_page = '{LA_JUMP_PAGE}{L_COLON}';
+! var on_page = '{CURRENT_PAGE}';
+  var per_page = '{PER_PAGE}';
+! var base_url = '{BASE_URL|e('js')}';
+  
+  /**
+  * Jump to page

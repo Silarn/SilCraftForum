@@ -1,0 +1,46 @@
+*** includes/functions_content.php	2015-05-03 17:14:55.000000000 +0200
+--- includes/functions_content.php	2013-09-28 15:40:10.000000000 +0200
+***************
+*** 74,80 ****
+  	foreach ($sorts as $name => $sort_ary)
+  	{
+  		$key = $sort_ary['key'];
+! 		$selected = ${$sort_ary['key']};
+  
+  		// Check if the key is selectable. If not, we reset to the default or first key found.
+  		// This ensures the values are always valid. We also set $sort_dir/sort_key/etc. to the
+--- 70,76 ----
+  	foreach ($sorts as $name => $sort_ary)
+  	{
+  		$key = $sort_ary['key'];
+! 		$selected = $$sort_ary['key'];
+  
+  		// Check if the key is selectable. If not, we reset to the default or first key found.
+  		// This ensures the values are always valid. We also set $sort_dir/sort_key/etc. to the
+***************
+*** 83,94 ****
+  		{
+  			if ($sort_ary['default'] !== false)
+  			{
+! 				$selected = ${$key} = $sort_ary['default'];
+  			}
+  			else
+  			{
+  				@reset($sort_ary['options']);
+! 				$selected = ${$key} = key($sort_ary['options']);
+  			}
+  		}
+  
+--- 79,90 ----
+  		{
+  			if ($sort_ary['default'] !== false)
+  			{
+! 				$selected = $$key = $sort_ary['default'];
+  			}
+  			else
+  			{
+  				@reset($sort_ary['options']);
+! 				$selected = $$key = key($sort_ary['options']);
+  			}
+  		}
+  

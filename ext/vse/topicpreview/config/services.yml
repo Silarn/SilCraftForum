@@ -1,0 +1,81 @@
+services:
+    vse.topicpreview.data:
+        class: vse\topicpreview\core\data
+        arguments:
+            - '@config'
+            - '@user'
+
+    vse.topicpreview.display:
+        class: vse\topicpreview\core\display
+        arguments:
+            - '@config'
+            - '@dispatcher'
+            - '@template'
+            - '@vse.topicpreview.trim'
+            - '@user'
+            - '%core.root_path%'
+
+    vse.topicpreview.trim:
+        class: vse\topicpreview\core\trim\trim
+        arguments:
+            - '@vse.topicpreview.tools.manager'
+
+# ----- Event Listeners -----
+    vse.topicpreview.listener:
+        class: vse\topicpreview\event\listener
+        arguments:
+            - '@vse.topicpreview.data'
+            - '@vse.topicpreview.display'
+        tags:
+            - { name: event.listener }
+
+    vse.topicpreview.ucp_listener:
+        class: vse\topicpreview\event\ucp_listener
+        arguments:
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@user'
+        tags:
+            - { name: event.listener }
+
+# ----- Trim tool management -----
+    vse.topicpreview.tools.manager:
+        class: vse\topicpreview\core\trim\manager
+        arguments:
+            - '@vse.topicpreview.tools_collection'
+
+    vse.topicpreview.tools_collection:
+        class: phpbb\di\service_collection
+        arguments:
+            - '@service_container'
+        tags:
+            - { name: service_collection, tag: vse.topicpreview.tools }
+
+# ----- Trim tools -----
+    vse.topicpreview.tool.remove_bbcodes:
+        class: vse\topicpreview\core\trim\tools\remove_bbcodes
+        arguments:
+            - '@config'
+            - '@vse.topicpreview.tool.remove_bbcodes_legacy'
+            - '@?text_formatter.utils'
+        calls:
+            - [set_name, [remove_bbcodes]]
+        tags:
+            - { name: vse.topicpreview.tools }
+
+    vse.topicpreview.tool.remove_bbcodes_legacy:
+        class: vse\topicpreview\core\trim\tools\remove_bbcodes_legacy
+        arguments:
+            - '@config'
+        calls:
+            - [set_name, [remove_bbcodes_legacy]]
+        tags:
+            - { name: vse.topicpreview.tools }
+
+    vse.topicpreview.tool.remove_markup:
+        class: vse\topicpreview\core\trim\tools\remove_markup
+        calls:
+            - [set_name, [remove_markup]]
+        tags:
+            - { name: vse.topicpreview.tools }

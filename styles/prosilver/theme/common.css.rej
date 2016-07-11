@@ -1,0 +1,166 @@
+*** styles/prosilver/theme/common.css	2013-09-28 15:40:10.000000000 +0200
+--- styles/prosilver/theme/common.css	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 53,73 ****
+  }
+  
+  body {
+- 	/* Text-Sizing with ems: http://www.clagnut.com/blog/348/ */
+  	font-family: Verdana, Helvetica, Arial, sans-serif;
+- 	color: #828282;
+- 	background-color: #FFFFFF;
+- 	/*font-size: 62.5%;			 This sets the default font size to be equivalent to 10px */
+  	font-size: 10px;
+  	margin: 0;
+  	padding: 12px 0;
+  }
+  
+  h1 {
+  	/* Forum name */
+  	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  	margin-right: 200px;
+- 	color: #FFFFFF;
+  	margin-top: 15px;
+  	font-weight: bold;
+  	font-size: 2em;
+--- 92,109 ----
+  }
+  
+  body {
+  	font-family: Verdana, Helvetica, Arial, sans-serif;
+  	font-size: 10px;
++ 	line-height: normal;
+  	margin: 0;
+  	padding: 12px 0;
++ 	word-wrap: break-word;
+  }
+  
+  h1 {
+  	/* Forum name */
+  	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  	margin-right: 200px;
+  	margin-top: 15px;
+  	font-weight: bold;
+  	font-size: 2em;
+***************
+*** 114,122 ****
+  }
+  
+  hr {
+! 	/* Also see tweaks.css */
+! 	border: 0 none #FFFFFF;
+! 	border-top: 1px solid #CCCCCC;
+  	height: 1px;
+  	margin: 5px 0;
+  	display: block;
+--- 148,155 ----
+  }
+  
+  hr {
+! 	border: 0 solid transparent;
+! 	border-top-width: 1px;
+  	height: 1px;
+  	margin: 5px 0;
+  	display: block;
+***************
+*** 652,686 ****
+  }
+  
+  table.table1 tbody tr {
+! 	border: 1px solid #cfcfcf;
+! }
+! 
+! table.table1 tbody tr:hover, table.table1 tbody tr.hover {
+! 	background-color: #f6f6f6;
+! 	color: #000;
+  }
+  
+  table.table1 td {
+- 	color: #6a6a6a;
+  	font-size: 1.1em;
+  }
+  
+  table.table1 tbody td {
+  	padding: 5px;
+! 	border-top: 1px solid #FAFAFA;
+  }
+  
+  table.table1 tbody th {
+  	padding: 5px;
+! 	border-bottom: 1px solid #000000;
+  	text-align: left;
+- 	color: #333333;
+- 	background-color: #FFFFFF;
+  }
+  
+  /* Specific column styles */
+  table.table1 .name		{ text-align: left; }
+! table.table1 .posts		{ text-align: center !important; width: 7%; }
+  table.table1 .joined	{ text-align: left; width: 15%; }
+  table.table1 .active	{ text-align: left; width: 15%; }
+  table.table1 .mark		{ text-align: center; width: 7%; }
+--- 937,965 ----
+  }
+  
+  table.table1 tbody tr {
+! 	border: 1px solid transparent;
+  }
+  
+  table.table1 td {
+  	font-size: 1.1em;
+  }
+  
+  table.table1 tbody td {
+  	padding: 5px;
+! 	border-top: 1px solid transparent;
+  }
+  
+  table.table1 tbody th {
+  	padding: 5px;
+! 	border-bottom: 1px solid transparent;
+  	text-align: left;
+  }
+  
+  /* Specific column styles */
+  table.table1 .name		{ text-align: left; }
+! table.table1 .center		{ text-align: center; }
+! table.table1 .reportby	{ width: 15%; }
+! table.table1 .posts		{ text-align: center; width: 7%; }
+  table.table1 .joined	{ text-align: left; width: 15%; }
+  table.table1 .active	{ text-align: left; width: 15%; }
+  table.table1 .mark		{ text-align: center; width: 7%; }
+***************
+*** 713,730 ****
+  	margin: 0 -1px;
+  }
+  
+! .forumbg-table > .inner > span.corners-top {
+! 	margin: 0 -4px -1px -4px;
+! }
+! 
+! .forumbg-table > .inner > span.corners-bottom {
+! 	margin: -1px -4px 0 -4px;
+  }
+  
+  /* Misc layout styles
+  ---------------------------------------- */
+! /* column[1-2] styles are containers for two column layouts 
+!    Also see tweaks.css */
+  .column1 {
+  	float: left;
+  	clear: left;
+--- 991,1004 ----
+  	margin: 0 -1px;
+  }
+  
+! #color_palette_placeholder table {
+! 	border-collapse: separate;
+! 	border-spacing: 1px;
+  }
+  
+  /* Misc layout styles
+  ---------------------------------------- */
+! /* column[1-2] styles are containers for two column layouts */
+  .column1 {
+  	float: left;
+  	clear: left;

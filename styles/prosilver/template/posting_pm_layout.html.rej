@@ -1,0 +1,43 @@
+*** styles/prosilver/template/posting_pm_layout.html	2013-09-28 15:40:10.000000000 +0200
+--- styles/prosilver/template/posting_pm_layout.html	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 15,29 ****
+  
+  <!-- IF S_DISPLAY_PREVIEW --><!-- INCLUDE posting_preview.html --><!-- ENDIF -->
+  
+! <h2>{L_TITLE}</h2>
+  
+  <div class="panel" id="postingbox">
+! 	<div class="inner"><span class="corners-top"><span></span></span>
+  
+  	<!-- DEFINE $EXTRA_POSTING_OPTIONS = 1 -->
+  	<!-- INCLUDE posting_editor.html -->
+  
+! 	<span class="corners-bottom"><span></span></span></div>
+  </div>
+  
+  <!-- IF S_SHOW_ATTACH_BOX --><!-- INCLUDE posting_attach_body.html --><!-- ENDIF -->
+--- 15,37 ----
+  
+  <!-- IF S_DISPLAY_PREVIEW --><!-- INCLUDE posting_preview.html --><!-- ENDIF -->
+  
+! <h2 class="posting-title">{L_TITLE}</h2>
+! 
+! <div class="panel" id="pmheader-postingbox">
+! 	<div class="inner">
+! 	<!-- EVENT posting_pm_layout_include_pm_header_before -->
+! 	<!-- INCLUDE posting_pm_header.html -->
+! 	<!-- EVENT posting_pm_layout_include_pm_header_after -->
+! 	</div>
+! </div>
+  
+  <div class="panel" id="postingbox">
+! 	<div class="inner">
+  
+  	<!-- DEFINE $EXTRA_POSTING_OPTIONS = 1 -->
+  	<!-- INCLUDE posting_editor.html -->
+  
+! 	</div>
+  </div>
+  
+  <!-- IF S_SHOW_ATTACH_BOX --><!-- INCLUDE posting_attach_body.html --><!-- ENDIF -->

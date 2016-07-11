@@ -1,0 +1,18 @@
+*** includes/acp/acp_search.php	2015-05-03 17:14:55.000000000 +0200
+--- includes/acp/acp_search.php	2013-09-28 15:40:10.000000000 +0200
+***************
+*** 455,460 ****
+  
+  		$search = null;
+  		$error = false;
+  		foreach ($search_types as $type)
+  		{
+  			if ($this->init_search($type, $search, $error) || !method_exists($search, 'index_created'))
+--- 461,467 ----
+  
+  		$search = null;
+  		$error = false;
++ 		$search_options = '';
+  		foreach ($search_types as $type)
+  		{
+  			if ($this->init_search($type, $search, $error) || !method_exists($search, 'index_created'))

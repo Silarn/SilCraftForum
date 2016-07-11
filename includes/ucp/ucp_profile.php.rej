@@ -1,0 +1,123 @@
+*** includes/ucp/ucp_profile.php	2013-09-28 15:40:10.000000000 +0200
+--- includes/ucp/ucp_profile.php	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 31,43 ****
+  
+  	function main($id, $mode)
+  	{
+! 		global $config, $db, $user, $auth, $template, $phpbb_root_path, $phpEx;
+  
+  		$user->add_lang('posting');
+  
+! 		$preview	= (!empty($_POST['preview'])) ? true : false;
+! 		$submit		= (!empty($_POST['submit'])) ? true : false;
+! 		$delete		= (!empty($_POST['delete'])) ? true : false;
+  		$error = $data = array();
+  		$s_hidden_fields = '';
+  
+--- 33,46 ----
+  
+  	function main($id, $mode)
+  	{
+! 		global $cache, $config, $db, $user, $auth, $template, $phpbb_root_path, $phpEx;
+! 		global $request, $phpbb_container, $phpbb_dispatcher;
+  
+  		$user->add_lang('posting');
+  
+! 		$preview	= $request->variable('preview', false, false, \phpbb\request\request_interface::POST);
+! 		$submit		= $request->variable('submit', false, false, \phpbb\request\request_interface::POST);
+! 		$delete		= $request->variable('delete', false, false, \phpbb\request\request_interface::POST);
+  		$error = $data = array();
+  		$s_hidden_fields = '';
+  
+***************
+*** 48,59 ****
+  				$data = array(
+  					'username'			=> utf8_normalize_nfc(request_var('username', $user->data['username'], true)),
+  					'email'				=> strtolower(request_var('email', $user->data['user_email'])),
+! 					'email_confirm'		=> strtolower(request_var('email_confirm', '')),
+! 					'new_password'		=> request_var('new_password', '', true),
+! 					'cur_password'		=> request_var('cur_password', '', true),
+! 					'password_confirm'	=> request_var('password_confirm', '', true),
+  				);
+  
+  				add_form_key('ucp_reg_details');
+  
+  				if ($submit)
+--- 51,72 ----
+  				$data = array(
+  					'username'			=> utf8_normalize_nfc(request_var('username', $user->data['username'], true)),
+  					'email'				=> strtolower(request_var('email', $user->data['user_email'])),
+! 					'new_password'		=> $request->variable('new_password', '', true),
+! 					'cur_password'		=> $request->variable('cur_password', '', true),
+! 					'password_confirm'	=> $request->variable('password_confirm', '', true),
+  				);
+  
++ 				/**
++ 				* Modify user registration data on editing account settings in UCP
++ 				*
++ 				* @event core.ucp_profile_reg_details_data
++ 				* @var	array	data		Array with current or updated user registration data
++ 				* @var	bool	submit		Flag indicating if submit button has been pressed
++ 				* @since 3.1.4-RC1
++ 				*/
++ 				$vars = array('data', 'submit');
++ 				extract($phpbb_dispatcher->trigger_event('core.ucp_profile_reg_details_data', compact($vars)));
++ 
+  				add_form_key('ucp_reg_details');
+  
+  				if ($submit)
+***************
+*** 308,333 ****
+  					$data['user_birthday'] = sprintf('%2d-%2d-%4d', $data['bday_day'], $data['bday_month'], $data['bday_year']);
+  				}
+  
+  				add_form_key('ucp_profile_info');
+  
+  				if ($submit)
+  				{
+  					$validate_array = array(
+- 						'icq'			=> array(
+- 							array('string', true, 3, 15),
+- 							array('match', true, '#^[0-9]+$#i')),
+- 						'aim'			=> array('string', true, 3, 255),
+- 						'msn'			=> array('string', true, 5, 255),
+  						'jabber'		=> array(
+  							array('string', true, 5, 255),
+  							array('jabber')),
+- 						'yim'			=> array('string', true, 5, 255),
+- 						'website'		=> array(
+- 							array('string', true, 12, 255),
+- 							array('match', true, '#^http[s]?://(.*?\.)*?[a-z0-9\-]+\.[a-z]{2,4}#i')),
+- 						'location'		=> array('string', true, 2, 100),
+- 						'occupation'	=> array('string', true, 2, 500),
+- 						'interests'		=> array('string', true, 2, 500),
+  					);
+  
+  					if ($config['allow_birthdays'])
+--- 335,359 ----
+  					$data['user_birthday'] = sprintf('%2d-%2d-%4d', $data['bday_day'], $data['bday_month'], $data['bday_year']);
+  				}
+  
++ 				/**
++ 				* Modify user data on editing profile in UCP
++ 				*
++ 				* @event core.ucp_profile_modify_profile_info
++ 				* @var	array	data		Array with user profile data
++ 				* @var	bool	submit		Flag indicating if submit button has been pressed
++ 				* @since 3.1.4-RC1
++ 				*/
++ 				$vars = array('data', 'submit');
++ 				extract($phpbb_dispatcher->trigger_event('core.ucp_profile_modify_profile_info', compact($vars)));
++ 
+  				add_form_key('ucp_profile_info');
+  
+  				if ($submit)
+  				{
+  					$validate_array = array(
+  						'jabber'		=> array(
+  							array('string', true, 5, 255),
+  							array('jabber')),
+  					);
+  
+  					if ($config['allow_birthdays'])

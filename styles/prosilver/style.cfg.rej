@@ -1,0 +1,22 @@
+*** styles/prosilver/style.cfg	2013-09-28 15:40:10.000000000 +0200
+--- styles/prosilver/style.cfg	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 20,24 ****
+  
+  # General Information about this style
+  name = prosilver
+! copyright = &copy; phpBB Group, 2007
+! version = 3.0.12--- 22,34 ----
+  
+  # General Information about this style
+  name = prosilver
+! copyright = © phpBB Limited, 2007
+! style_version = 3.1.4
+! phpbb_version = 3.1.4
+! 
+! # Defining a different template bitfield
+! # template_bitfield = lNg=
+! 
+! # Parent style
+! # Set value to empty or to this style's name if this style does not have a parent style
+! parent = prosilver

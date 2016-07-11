@@ -1,0 +1,5 @@
+<?php exit; ?>
+1468184484
+SELECT * FROM phpbb_bbcodes WHERE bbcode_id = 72
+951
+a:1:{i:0;a:12:{s:9:"bbcode_id";s:2:"72";s:10:"bbcode_tag";s:8:"twitterl";s:15:"bbcode_helpline";s:76:"[twitterl]Twitter ID[/twitterl] - Create a simple link to a twitter account.";s:18:"display_on_posting";s:1:"1";s:12:"bbcode_match";s:33:"[twitterl]{IDENTIFIER}[/twitterl]";s:10:"bbcode_tpl";s:169:"<img alt="" src="http://widgets.twimg.com/i/widget-bird.png" height="12"><a href="http://www.twitter.com/{IDENTIFIER}" target="_blank"><strong>@</strong>{IDENTIFIER}</a>";s:16:"first_pass_match";s:44:"!\[twitterl\]([a-zA-Z0-9-_]+)\[/twitterl\]!i";s:18:"first_pass_replace";s:35:"[twitterl:$uid]${1}[/twitterl:$uid]";s:17:"second_pass_match";s:54:"!\[twitterl:$uid\]([a-zA-Z0-9-_]+)\[/twitterl:$uid\]!s";s:19:"second_pass_replace";s:153:"<img alt="" src="http://widgets.twimg.com/i/widget-bird.png" height="12"><a href="http://www.twitter.com/${1}" target="_blank"><strong>@</strong>${1}</a>";s:12:"bbcode_order";s:2:"29";s:12:"bbcode_group";s:1:"0";}}

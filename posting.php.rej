@@ -1,0 +1,117 @@
+*** posting.php	2013-09-28 15:40:10.000000000 +0200
+--- posting.php	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 326,337 ****
+  	break;
+  
+  	case 'delete':
+! 		if ($user->data['is_registered'] && $auth->acl_gets('f_delete', 'm_delete', $forum_id))
+  		{
+  			$is_authed = true;
+  		}
+  	break;
+  }
+  
+  if (!$is_authed)
+  {
+--- 394,462 ----
+  	break;
+  
+  	case 'delete':
+! 		if ($user->data['is_registered'] && ($auth->acl_get('m_delete', $forum_id) || ($post_data['poster_id'] == $user->data['user_id'] && $auth->acl_get('f_delete', $forum_id))))
+! 		{
+! 			$is_authed = true;
+! 		}
+! 
+! 	// no break;
+! 
+! 	case 'soft_delete':
+! 		if (!$is_authed && $user->data['is_registered'] && $phpbb_content_visibility->can_soft_delete($forum_id, $post_data['poster_id'], $post_data['post_edit_locked']))
+  		{
++ 			// Fall back to soft_delete if we have no permissions to delete posts but to soft delete them
+  			$is_authed = true;
++ 			$mode = 'soft_delete';
++ 		}
++ 		else if (!$is_authed)
++ 		{
++ 			// Display the same error message for softdelete we use for delete
++ 			$mode = 'delete';
+  		}
+  	break;
+  }
++ /**
++ * This event allows you to do extra auth checks and verify if the user
++ * has the required permissions
++ *
++ * Extensions should only change the error and is_authed variables.
++ *
++ * @event core.modify_posting_auth
++ * @var	int		post_id		ID of the post
++ * @var	int		topic_id	ID of the topic
++ * @var	int		forum_id	ID of the forum
++ * @var	int		draft_id	ID of the draft
++ * @var	int		lastclick	Timestamp of when the form was last loaded
++ * @var	bool	submit		Whether or not the form has been submitted
++ * @var	bool	preview		Whether or not the post is being previewed
++ * @var	bool	save		Whether or not a draft is being saved
++ * @var	bool	load		Whether or not a draft is being loaded
++ * @var	bool	refresh		Whether or not to retain previously submitted data
++ * @var	string	mode		What action to take if the form has been submitted
++ *							post|reply|quote|edit|delete|bump|smilies|popup
++ * @var	array	error		Any error strings; a non-empty array aborts
++ *							form submission.
++ *							NOTE: Should be actual language strings, NOT
++ *							language keys.
++ * @var	bool	is_authed	Does the user have the required permissions?
++ * @since 3.1.3-RC1
++ */
++ $vars = array(
++ 	'post_id',
++ 	'topic_id',
++ 	'forum_id',
++ 	'draft_id',
++ 	'lastclick',
++ 	'submit',
++ 	'preview',
++ 	'save',
++ 	'load',
++ 	'refresh',
++ 	'mode',
++ 	'error',
++ 	'is_authed',
++ );
++ extract($phpbb_dispatcher->trigger_event('core.modify_posting_auth', compact($vars)));
+  
+  if (!$is_authed)
+  {
+***************
+*** 1460,1471 ****
+  			'POLL_QUESTION'		=> $parse_poll->message,
+  
+  			'L_POLL_LENGTH'		=> ($post_data['poll_length']) ? sprintf($user->lang['POLL_RUN_TILL'], $user->format_date($poll_end)) : '',
+! 			'L_MAX_VOTES'		=> ($post_data['poll_max_options'] == 1) ? $user->lang['MAX_OPTION_SELECT'] : sprintf($user->lang['MAX_OPTIONS_SELECT'], $post_data['poll_max_options']))
+! 		);
+  
+! 		$parse_poll->message = implode("\n", $post_data['poll_options']);
+! 		$parse_poll->format_display($post_data['enable_bbcode'], $post_data['enable_urls'], $post_data['enable_smilies']);
+! 		$preview_poll_options = explode('<br />', $parse_poll->message);
+  		unset($parse_poll);
+  
+  		foreach ($preview_poll_options as $key => $option)
+--- 1758,1773 ----
+  			'POLL_QUESTION'		=> $parse_poll->message,
+  
+  			'L_POLL_LENGTH'		=> ($post_data['poll_length']) ? sprintf($user->lang['POLL_RUN_TILL'], $user->format_date($poll_end)) : '',
+! 			'L_MAX_VOTES'		=> $user->lang('MAX_OPTIONS_SELECT', (int) $post_data['poll_max_options']),
+! 		));
+  
+! 		$preview_poll_options = array();
+! 		foreach ($post_data['poll_options'] as $poll_option)
+! 		{
+! 			$parse_poll->message = $poll_option;
+! 			$parse_poll->format_display($post_data['enable_bbcode'], $post_data['enable_urls'], $post_data['enable_smilies']);
+! 			$preview_poll_options[] = $parse_poll->message;
+! 		}
+  		unset($parse_poll);
+  
+  		foreach ($preview_poll_options as $key => $option)

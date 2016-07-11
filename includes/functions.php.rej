@@ -1,0 +1,515 @@
+*** includes/functions.php	2013-09-28 15:40:10.000000000 +0200
+--- includes/functions.php	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 1141,1181 ****
+  * Marks a topic/forum as read
+  * Marks a topic as posted to
+  *
+  * @param int $user_id can only be used with $mode == 'post'
+  */
+  function markread($mode, $forum_id = false, $topic_id = false, $post_time = 0, $user_id = 0)
+  {
+  	global $db, $user, $config;
+  
+  	if ($mode == 'all')
+  	{
+  		if ($forum_id === false || !sizeof($forum_id))
+  		{
+  			if ($config['load_db_lastread'] && $user->data['is_registered'])
+  			{
+  				// Mark all forums read (index page)
+! 				$db->sql_query('DELETE FROM ' . TOPICS_TRACK_TABLE . " WHERE user_id = {$user->data['user_id']}");
+! 				$db->sql_query('DELETE FROM ' . FORUMS_TRACK_TABLE . " WHERE user_id = {$user->data['user_id']}");
+! 				$db->sql_query('UPDATE ' . USERS_TABLE . ' SET user_lastmark = ' . time() . " WHERE user_id = {$user->data['user_id']}");
+  			}
+  			else if ($config['load_anon_lastread'] || $user->data['is_registered'])
+  			{
+! 				$tracking_topics = (isset($_COOKIE[$config['cookie_name'] . '_track'])) ? ((STRIP) ? stripslashes($_COOKIE[$config['cookie_name'] . '_track']) : $_COOKIE[$config['cookie_name'] . '_track']) : '';
+  				$tracking_topics = ($tracking_topics) ? tracking_unserialize($tracking_topics) : array();
+  
+  				unset($tracking_topics['tf']);
+  				unset($tracking_topics['t']);
+  				unset($tracking_topics['f']);
+! 				$tracking_topics['l'] = base_convert(time() - $config['board_startdate'], 10, 36);
+  
+! 				$user->set_cookie('track', tracking_serialize($tracking_topics), time() + 31536000);
+! 				$_COOKIE[$config['cookie_name'] . '_track'] = (STRIP) ? addslashes(tracking_serialize($tracking_topics)) : tracking_serialize($tracking_topics);
+  
+  				unset($tracking_topics);
+  
+  				if ($user->data['is_registered'])
+  				{
+! 					$db->sql_query('UPDATE ' . USERS_TABLE . ' SET user_lastmark = ' . time() . " WHERE user_id = {$user->data['user_id']}");
+  				}
+  			}
+  		}
+--- 946,1055 ----
+  * Marks a topic/forum as read
+  * Marks a topic as posted to
+  *
++ * @param string $mode (all, topics, topic, post)
++ * @param int|bool $forum_id Used in all, topics, and topic mode
++ * @param int|bool $topic_id Used in topic and post mode
++ * @param int $post_time 0 means current time(), otherwise to set a specific mark time
+  * @param int $user_id can only be used with $mode == 'post'
+  */
+  function markread($mode, $forum_id = false, $topic_id = false, $post_time = 0, $user_id = 0)
+  {
+  	global $db, $user, $config;
++ 	global $request, $phpbb_container, $phpbb_dispatcher;
++ 
++ 	$post_time = ($post_time === 0 || $post_time > time()) ? time() : (int) $post_time;
++ 
++ 	$should_markread = true;
++ 
++ 	/**
++ 	 * This event is used for performing actions directly before marking forums,
++ 	 * topics or posts as read.
++ 	 * 
++ 	 * It is also possible to prevent the marking. For that, the $should_markread parameter
++ 	 * should be set to FALSE.
++ 	 *
++ 	 * @event core.markread_before
++ 	 * @var	string	mode				Variable containing marking mode value
++ 	 * @var	mixed	forum_id			Variable containing forum id, or false
++ 	 * @var	mixed	topic_id			Variable containing topic id, or false
++ 	 * @var	int		post_time			Variable containing post time
++ 	 * @var	int		user_id				Variable containing the user id
++ 	 * @var	bool	should_markread		Flag indicating if the markread should be done or not.
++ 	 * @since 3.1.4-RC1
++ 	 */
++ 	$vars = array(
++ 		'mode',
++ 		'forum_id',
++ 		'topic_id',
++ 		'post_time',
++ 		'user_id',
++ 		'should_markread',
++ 	);
++ 	extract($phpbb_dispatcher->trigger_event('core.markread_before', compact($vars)));
++ 
++ 	if (!$should_markread)
++ 	{
++ 		return;
++ 	}
+  
+  	if ($mode == 'all')
+  	{
+  		if ($forum_id === false || !sizeof($forum_id))
+  		{
++ 			// Mark all forums read (index page)
++ 
++ 			$phpbb_notifications = $phpbb_container->get('notification_manager');
++ 
++ 			// Mark all topic notifications read for this user
++ 			$phpbb_notifications->mark_notifications_read(array(
++ 				'notification.type.topic',
++ 				'notification.type.quote',
++ 				'notification.type.bookmark',
++ 				'notification.type.post',
++ 				'notification.type.approve_topic',
++ 				'notification.type.approve_post',
++ 			), false, $user->data['user_id'], $post_time);
++ 
+  			if ($config['load_db_lastread'] && $user->data['is_registered'])
+  			{
+  				// Mark all forums read (index page)
+! 				$tables = array(TOPICS_TRACK_TABLE, FORUMS_TRACK_TABLE);
+! 				foreach ($tables as $table)
+! 				{
+! 					$sql = 'DELETE FROM ' . $table . "
+! 						WHERE user_id = {$user->data['user_id']}
+! 							AND mark_time < $post_time";
+! 					$db->sql_query($sql);
+! 				}
+! 
+! 				$sql = 'UPDATE ' . USERS_TABLE . "
+! 					SET user_lastmark = $post_time
+! 					WHERE user_id = {$user->data['user_id']}
+! 						AND user_lastmark < $post_time";
+! 				$db->sql_query($sql);
+  			}
+  			else if ($config['load_anon_lastread'] || $user->data['is_registered'])
+  			{
+! 				$tracking_topics = $request->variable($config['cookie_name'] . '_track', '', true, \phpbb\request\request_interface::COOKIE);
+  				$tracking_topics = ($tracking_topics) ? tracking_unserialize($tracking_topics) : array();
+  
+  				unset($tracking_topics['tf']);
+  				unset($tracking_topics['t']);
+  				unset($tracking_topics['f']);
+! 				$tracking_topics['l'] = base_convert($post_time - $config['board_startdate'], 10, 36);
+  
+! 				$user->set_cookie('track', tracking_serialize($tracking_topics), $post_time + 31536000);
+! 				$request->overwrite($config['cookie_name'] . '_track', tracking_serialize($tracking_topics), \phpbb\request\request_interface::COOKIE);
+  
+  				unset($tracking_topics);
+  
+  				if ($user->data['is_registered'])
+  				{
+! 					$sql = 'UPDATE ' . USERS_TABLE . "
+! 						SET user_lastmark = $post_time
+! 						WHERE user_id = {$user->data['user_id']}
+! 							AND user_lastmark < $post_time";
+! 					$db->sql_query($sql);
+  				}
+  			}
+  		}
+***************
+*** 2253,2336 ****
+  		// Relative uri
+  		$pathinfo = pathinfo($url);
+  
+! 		if (!$disable_cd_check && !file_exists($pathinfo['dirname'] . '/'))
+  		{
+! 			$url = str_replace('../', '', $url);
+! 			$pathinfo = pathinfo($url);
+  
+! 			if (!file_exists($pathinfo['dirname'] . '/'))
+  			{
+! 				// fallback to "last known user page"
+! 				// at least this way we know the user does not leave the phpBB root
+! 				$url = generate_board_url() . '/' . $user->page['page'];
+! 				$failover_flag = true;
+  			}
+  		}
+  
+! 		if (!$failover_flag)
+! 		{
+! 			// Is the uri pointing to the current directory?
+! 			if ($pathinfo['dirname'] == '.')
+! 			{
+! 				$url = str_replace('./', '', $url);
+! 
+! 				// Strip / from the beginning
+! 				if ($url && substr($url, 0, 1) == '/')
+! 				{
+! 					$url = substr($url, 1);
+! 				}
+! 
+! 				if ($user->page['page_dir'])
+! 				{
+! 					$url = generate_board_url() . '/' . $user->page['page_dir'] . '/' . $url;
+! 				}
+! 				else
+! 				{
+! 					$url = generate_board_url() . '/' . $url;
+! 				}
+! 			}
+! 			else
+! 			{
+! 				// Used ./ before, but $phpbb_root_path is working better with urls within another root path
+! 				$root_dirs = explode('/', str_replace('\\', '/', phpbb_realpath($phpbb_root_path)));
+! 				$page_dirs = explode('/', str_replace('\\', '/', phpbb_realpath($pathinfo['dirname'])));
+! 				$intersection = array_intersect_assoc($root_dirs, $page_dirs);
+! 
+! 				$root_dirs = array_diff_assoc($root_dirs, $intersection);
+! 				$page_dirs = array_diff_assoc($page_dirs, $intersection);
+! 
+! 				$dir = str_repeat('../', sizeof($root_dirs)) . implode('/', $page_dirs);
+  
+! 				// Strip / from the end
+! 				if ($dir && substr($dir, -1, 1) == '/')
+! 				{
+! 					$dir = substr($dir, 0, -1);
+! 				}
+! 
+! 				// Strip / from the beginning
+! 				if ($dir && substr($dir, 0, 1) == '/')
+! 				{
+! 					$dir = substr($dir, 1);
+! 				}
+  
+! 				$url = str_replace($pathinfo['dirname'] . '/', '', $url);
+  
+! 				// Strip / from the beginning
+! 				if (substr($url, 0, 1) == '/')
+! 				{
+! 					$url = substr($url, 1);
+! 				}
+  
+! 				$url = (!empty($dir) ? $dir . '/' : '') . $url;
+! 				$url = generate_board_url() . '/' . $url;
+! 			}
+! 		}
+  	}
+  
+  	// Make sure no linebreaks are there... to prevent http response splitting for PHP < 4.4.2
+  	if (strpos(urldecode($url), "\n") !== false || strpos(urldecode($url), "\r") !== false || strpos($url, ';') !== false)
+  	{
+! 		trigger_error('Tried to redirect to potentially insecure url.', E_USER_ERROR);
+  	}
+  
+  	// Now, also check the protocol and for a valid url the last time...
+--- 2070,2109 ----
+  		// Relative uri
+  		$pathinfo = pathinfo($url);
+  
+! 		// Is the uri pointing to the current directory?
+! 		if ($pathinfo['dirname'] == '.')
+  		{
+! 			$url = str_replace('./', '', $url);
+  
+! 			// Strip / from the beginning
+! 			if ($url && substr($url, 0, 1) == '/')
+  			{
+! 				$url = substr($url, 1);
+  			}
+  		}
+  
+! 		$url = $phpbb_path_helper->remove_web_root_path($url);
+  
+! 		if ($user->page['page_dir'])
+! 		{
+! 			$url = $user->page['page_dir'] . '/' . $url;
+! 		}
+  
+! 		$url = generate_board_url() . '/' . $url;
+! 	}
+  
+! 	// Clean URL and check if we go outside the forum directory
+! 	$url = $phpbb_path_helper->clean_url($url);
+  
+! 	if (!$disable_cd_check && strpos($url, generate_board_url(true) . '/') !== 0)
+! 	{
+! 		trigger_error('INSECURE_REDIRECT', E_USER_ERROR);
+  	}
+  
+  	// Make sure no linebreaks are there... to prevent http response splitting for PHP < 4.4.2
+  	if (strpos(urldecode($url), "\n") !== false || strpos(urldecode($url), "\r") !== false || strpos($url, ';') !== false)
+  	{
+! 		trigger_error('INSECURE_REDIRECT', E_USER_ERROR);
+  	}
+  
+  	// Now, also check the protocol and for a valid url the last time...
+***************
+*** 2502,2519 ****
+  	}
+  	else
+  	{
+! 		if (!empty($_SERVER['SERVER_PROTOCOL']))
+! 		{
+! 			$version = $_SERVER['SERVER_PROTOCOL'];
+! 		}
+! 		else
+! 		{
+! 			$version = 'HTTP/1.0';
+! 		}
+  		header("$version $code $message", true, $code);
+  	}
+  }
+  
+  //Form validation
+  
+  
+--- 2247,2287 ----
+  	}
+  	else
+  	{
+! 		$version = phpbb_request_http_version();
+  		header("$version $code $message", true, $code);
+  	}
+  }
+  
++ /**
++ * Returns the HTTP version used in the current request.
++ *
++ * Handles the case of being called before $request is present,
++ * in which case it falls back to the $_SERVER superglobal.
++ *
++ * @return string HTTP version
++ */
++ function phpbb_request_http_version()
++ {
++ 	global $request;
++ 
++ 	$version = '';
++ 	if ($request && $request->server('SERVER_PROTOCOL'))
++ 	{
++ 		$version = $request->server('SERVER_PROTOCOL');
++ 	}
++ 	else if (isset($_SERVER['SERVER_PROTOCOL']))
++ 	{
++ 		$version = $_SERVER['SERVER_PROTOCOL'];
++ 	}
++ 
++ 	if (!empty($version) && is_string($version) && preg_match('#^HTTP/[0-9]\.[0-9]$#', $version))
++ 	{
++ 		return $version;
++ 	}
++ 
++ 	return 'HTTP/1.0';
++ }
++ 
+  //Form validation
+  
+  
+***************
+*** 2878,2905 ****
+  		// Special cases... determine
+  		switch ($result['status'])
+  		{
+  			case LOGIN_ERROR_ATTEMPTS:
+  
+! 				$captcha = phpbb_captcha_factory::get_instance($config['captcha_plugin']);
+  				$captcha->init(CONFIRM_LOGIN);
+  				// $captcha->reset();
+  
+  				$template->assign_vars(array(
+  					'CAPTCHA_TEMPLATE'			=> $captcha->get_template(),
+  				));
+! 
+! 				$err = $user->lang[$result['error_msg']];
+! 			break;
+! 
+! 			case LOGIN_ERROR_PASSWORD_CONVERT:
+! 				$err = sprintf(
+! 					$user->lang[$result['error_msg']],
+! 					($config['email_enable']) ? '<a href="' . append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=sendpassword') . '">' : '',
+! 					($config['email_enable']) ? '</a>' : '',
+! 					($config['board_contact']) ? '<a href="mailto:' . htmlspecialchars($config['board_contact']) . '">' : '',
+! 					($config['board_contact']) ? '</a>' : ''
+! 				);
+! 			break;
+  
+  			// Username, password, etc...
+  			default:
+--- 2677,2702 ----
+  		// Special cases... determine
+  		switch ($result['status'])
+  		{
++ 			case LOGIN_ERROR_PASSWORD_CONVERT:
++ 				$err = sprintf(
++ 					$user->lang[$result['error_msg']],
++ 					($config['email_enable']) ? '<a href="' . append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=sendpassword') . '">' : '',
++ 					($config['email_enable']) ? '</a>' : '',
++ 					'<a href="' . phpbb_get_board_contact_link($config, $phpbb_root_path, $phpEx) . '">',
++ 					'</a>'
++ 				);
++ 			break;
++ 
+  			case LOGIN_ERROR_ATTEMPTS:
+  
+! 				$captcha = $phpbb_container->get('captcha.factory')->get_instance($config['captcha_plugin']);
+  				$captcha->init(CONFIRM_LOGIN);
+  				// $captcha->reset();
+  
+  				$template->assign_vars(array(
+  					'CAPTCHA_TEMPLATE'			=> $captcha->get_template(),
+  				));
+! 			// no break;
+  
+  			// Username, password, etc...
+  			default:
+***************
+*** 4269,4326 ****
+  	}
+  	else if ($config['load_online_guests'])
+  	{
+! 		$l_online = ($online_users['guests_online'] === 1) ? $user->lang['BROWSING_' . $item_caps . '_GUEST'] : $user->lang['BROWSING_' . $item_caps . '_GUESTS'];
+! 		$online_userlist = sprintf($l_online, $online_userlist, $online_users['guests_online']);
+  	}
+  	else
+  	{
+  		$online_userlist = sprintf($user->lang['BROWSING_' . $item_caps], $online_userlist);
+  	}
+  	// Build online listing
+! 	$vars_online = array(
+! 		'ONLINE'	=> array('total_online', 'l_t_user_s', 0),
+! 		'REG'		=> array('visible_online', 'l_r_user_s', !$config['load_online_guests']),
+! 		'HIDDEN'	=> array('hidden_online', 'l_h_user_s', $config['load_online_guests']),
+! 		'GUEST'		=> array('guests_online', 'l_g_user_s', 0)
+! 	);
+  
+! 	foreach ($vars_online as $l_prefix => $var_ary)
+  	{
+! 		if ($var_ary[2])
+! 		{
+! 			$l_suffix = '_AND';
+! 		}
+! 		else
+! 		{
+! 			$l_suffix = '';
+! 		}
+! 		switch ($online_users[$var_ary[0]])
+! 		{
+! 			case 0:
+! 				${$var_ary[1]} = $user->lang[$l_prefix . '_USERS_ZERO_TOTAL' . $l_suffix];
+! 			break;
+! 
+! 			case 1:
+! 				${$var_ary[1]} = $user->lang[$l_prefix . '_USER_TOTAL' . $l_suffix];
+! 			break;
+! 
+! 			default:
+! 				${$var_ary[1]} = $user->lang[$l_prefix . '_USERS_TOTAL' . $l_suffix];
+! 			break;
+! 		}
+  	}
+! 	unset($vars_online);
+! 
+! 	$l_online_users = sprintf($l_t_user_s, $online_users['total_online']);
+! 	$l_online_users .= sprintf($l_r_user_s, $online_users['visible_online']);
+! 	$l_online_users .= sprintf($l_h_user_s, $online_users['hidden_online']);
+! 
+! 	if ($config['load_online_guests'])
+  	{
+! 		$l_online_users .= sprintf($l_g_user_s, $online_users['guests_online']);
+  	}
+  
+! 
+  
+  	return array(
+  		'online_userlist'	=> $online_userlist,
+--- 4324,4375 ----
+  	}
+  	else if ($config['load_online_guests'])
+  	{
+! 		$online_userlist = $user->lang('BROWSING_' . $item_caps . '_GUESTS', $online_users['guests_online'], $online_userlist);
+  	}
+  	else
+  	{
+  		$online_userlist = sprintf($user->lang['BROWSING_' . $item_caps], $online_userlist);
+  	}
+  	// Build online listing
+! 	$visible_online = $user->lang('REG_USERS_TOTAL', (int) $online_users['visible_online']);
+! 	$hidden_online = $user->lang('HIDDEN_USERS_TOTAL', (int) $online_users['hidden_online']);
+  
+! 	if ($config['load_online_guests'])
+  	{
+! 		$guests_online = $user->lang('GUEST_USERS_TOTAL', (int) $online_users['guests_online']);
+! 		$l_online_users = $user->lang('ONLINE_USERS_TOTAL_GUESTS', (int) $online_users['total_online'], $visible_online, $hidden_online, $guests_online);
+  	}
+! 	else
+  	{
+! 		$l_online_users = $user->lang('ONLINE_USERS_TOTAL', (int) $online_users['total_online'], $visible_online, $hidden_online);
+  	}
+  
+! 	/**
+! 	* Modify online userlist data
+! 	*
+! 	* @event core.obtain_users_online_string_modify
+! 	* @var	array	online_users		Array with online users data
+! 	*									from obtain_users_online()
+! 	* @var	int		item_id				Restrict online users to item id
+! 	* @var	string	item				Restrict online users to a certain
+! 	*									session item, e.g. forum for
+! 	*									session_forum_id
+! 	* @var	array	rowset				Array with online users data
+! 	* @var	array	user_online_link	Array with online users items (usernames)
+! 	* @var	string	online_userlist		String containing users online list
+! 	* @var	string	l_online_users		String with total online users count info
+! 	* @since 3.1.4-RC1
+! 	*/
+! 	$vars = array(
+! 		'online_users',
+! 		'item_id',
+! 		'item',
+! 		'rowset',
+! 		'user_online_link',
+! 		'online_userlist',
+! 		'l_online_users',
+! 	);
+! 	extract($phpbb_dispatcher->trigger_event('core.obtain_users_online_string_modify', compact($vars)));
+  
+  	return array(
+  		'online_userlist'	=> $online_userlist,

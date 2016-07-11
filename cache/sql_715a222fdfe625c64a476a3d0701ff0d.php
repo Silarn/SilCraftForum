@@ -1,0 +1,5 @@
+<?php exit; ?>
+1468218465
+SELECT * FROM phpbb_bbcodes WHERE bbcode_id = 13
+778
+a:1:{i:0;a:12:{s:9:"bbcode_id";s:2:"13";s:10:"bbcode_tag";s:5:"font=";s:15:"bbcode_helpline";s:19:"ABBC3_FONT_HELPLINE";s:18:"display_on_posting";s:1:"1";s:12:"bbcode_match";s:29:"[font={INTTEXT}]{TEXT}[/font]";s:10:"bbcode_tpl";s:51:"<span style="font-family: {INTTEXT};">{TEXT}</span>";s:16:"first_pass_match";s:52:"!\[font\=([\p{L}\p{N}\-+,_. ]+)\](.*?)\[/font\]!iues";s:18:"first_pass_replace";s:141:"'[font=${1}:$uid]'.str_replace(array("\r\n", '\"', '\'', '(', ')'), array("\n", '"', '&#39;', '&#40;', '&#41;'), trim('${2}')).'[/font:$uid]'";s:17:"second_pass_match";s:60:"!\[font\=([\p{L}\p{N}\-+,_. ]+):$uid\](.*?)\[/font:$uid\]!su";s:19:"second_pass_replace";s:44:"<span style="font-family: ${1};">${2}</span>";s:12:"bbcode_order";s:1:"4";s:12:"bbcode_group";s:1:"0";}}

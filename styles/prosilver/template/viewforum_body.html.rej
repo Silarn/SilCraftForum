@@ -1,0 +1,109 @@
+*** styles/prosilver/template/viewforum_body.html	2013-09-28 15:40:10.000000000 +0200
+--- styles/prosilver/template/viewforum_body.html	2015-05-03 17:14:55.000000000 +0200
+***************
+*** 21,68 ****
+  			{FORUM_RULES}
+  		<!-- ENDIF -->
+  
+! 		<span class="corners-bottom"><span></span></span></div>
+  	</div>
+  <!-- ENDIF -->
+  
+  <!-- IF S_HAS_SUBFORUM -->
+  <!-- IF not S_IS_BOT and U_MARK_FORUMS -->
+! <ul class="linklist">
+! 	<li class="rightside"><a href="{U_MARK_FORUMS}">{L_MARK_SUBFORUMS_READ}</a></li>
+! </ul>
+  <!-- ENDIF -->
+  	<!-- INCLUDE forumlist_body.html -->
+  <!-- ENDIF -->
+  
+! <!-- IF S_DISPLAY_POST_INFO or PAGINATION or TOTAL_POSTS or TOTAL_TOPICS -->
+! 	<div class="topic-actions" <!-- IF S_HAS_SUBFORUM -->style="margin-top: 2em;"<!-- ENDIF -->>
+  
+  	<!-- IF not S_IS_BOT and S_DISPLAY_POST_INFO -->
+  		<div class="buttons">
+! 			<div class="<!-- IF S_IS_LOCKED -->locked-icon<!-- ELSE -->post-icon<!-- ENDIF -->" title="<!-- IF S_IS_LOCKED -->{L_FORUM_LOCKED}<!-- ELSE -->{L_POST_TOPIC}<!-- ENDIF -->"><a href="{U_POST_NEW_TOPIC}"><span></span><!-- IF S_IS_LOCKED -->{L_FORUM_LOCKED}<!-- ELSE -->{L_POST_TOPIC}<!-- ENDIF --></a></div>
+  		</div>
+  	<!-- ENDIF -->
+  
+  	<!-- IF S_DISPLAY_SEARCHBOX -->
+! 		<div class="search-box">
+  			<form method="get" id="forum-search" action="{S_SEARCHBOX_ACTION}">
+  			<fieldset>
+! 				<input class="inputbox search tiny" type="text" name="keywords" id="search_keywords" size="20" value="{L_SEARCH_FORUM}" onclick="if (this.value == '{LA_SEARCH_FORUM}') this.value = '';" onblur="if (this.value == '') this.value = '{LA_SEARCH_FORUM}';" />
+! 				<input class="button2" type="submit" value="{L_SEARCH}" />
+  				{S_SEARCH_LOCAL_HIDDEN_FIELDS}
+  			</fieldset>
+  			</form>
+  		</div>
+  	<!-- ENDIF -->
+  
+! 	<!-- IF PAGINATION or TOTAL_POSTS or TOTAL_TOPICS -->
+! 		<div class="pagination">
+! 			<!-- IF not S_IS_BOT and U_MARK_TOPICS --><a href="{U_MARK_TOPICS}" accesskey="m">{L_MARK_TOPICS_READ}</a> &bull; <!-- ENDIF --><!-- IF TOTAL_TOPICS -->{TOTAL_TOPICS}<!-- ENDIF -->
+! 			<!-- IF PAGE_NUMBER -->
+! 				<!-- IF PAGINATION --> &bull; <a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{PAGE_NUMBER}</a> &bull; <span>{PAGINATION}</span><!-- ELSE --> &bull; {PAGE_NUMBER}<!-- ENDIF -->
+! 			<!-- ENDIF -->
+! 		</div>
+! 	<!-- ENDIF -->
+  
+  	</div>
+  <!-- ENDIF -->
+--- 21,76 ----
+  			{FORUM_RULES}
+  		<!-- ENDIF -->
+  
+! 		</div>
+  	</div>
+  <!-- ENDIF -->
+  
+  <!-- IF S_HAS_SUBFORUM -->
+  <!-- IF not S_IS_BOT and U_MARK_FORUMS -->
+! 	<div class="action-bar compact">
+! 		<a href="{U_MARK_FORUMS}" class="mark-read rightside" data-ajax="mark_forums_read">{L_MARK_SUBFORUMS_READ}</a>
+! 	</div>
+  <!-- ENDIF -->
+  	<!-- INCLUDE forumlist_body.html -->
+  <!-- ENDIF -->
+  
+! <!-- IF S_DISPLAY_POST_INFO or .pagination or TOTAL_POSTS or TOTAL_TOPICS -->
+! 	<div class="action-bar top">
+  
+  	<!-- IF not S_IS_BOT and S_DISPLAY_POST_INFO -->
+  		<div class="buttons">
+! 			<!-- EVENT viewforum_buttons_top_before -->
+! 
+! 			<a href="{U_POST_NEW_TOPIC}" class="button icon-button <!-- IF S_IS_LOCKED -->locked-icon<!-- ELSE -->post-icon<!-- ENDIF -->" title="<!-- IF S_IS_LOCKED -->{L_FORUM_LOCKED}<!-- ELSE -->{L_POST_TOPIC}<!-- ENDIF -->">
+! 				<!-- IF S_IS_LOCKED -->{L_BUTTON_FORUM_LOCKED}<!-- ELSE -->{L_BUTTON_NEW_TOPIC}<!-- ENDIF -->
+! 			</a>
+! 
+! 			<!-- EVENT viewforum_buttons_top_after -->
+  		</div>
+  	<!-- ENDIF -->
+  
+  	<!-- IF S_DISPLAY_SEARCHBOX -->
+! 		<div class="search-box" role="search">
+  			<form method="get" id="forum-search" action="{S_SEARCHBOX_ACTION}">
+  			<fieldset>
+! 				<input class="inputbox search tiny" type="search" name="keywords" id="search_keywords" size="20" placeholder="{L_SEARCH_FORUM}" />
+! 				<button class="button icon-button search-icon" type="submit" title="{L_SEARCH}">{L_SEARCH}</button>
+! 				<a href="{U_SEARCH}" class="button icon-button search-adv-icon" title="{L_SEARCH_ADV}">{L_SEARCH_ADV}</a>
+  				{S_SEARCH_LOCAL_HIDDEN_FIELDS}
+  			</fieldset>
+  			</form>
+  		</div>
+  	<!-- ENDIF -->
+  
+! 	<div class="pagination">
+! 		<!-- IF not S_IS_BOT and U_MARK_TOPICS and .topicrow --><a href="{U_MARK_TOPICS}" class="mark" accesskey="m" data-ajax="mark_topics_read">{L_MARK_TOPICS_READ}</a> &bull; <!-- ENDIF -->
+! 		{TOTAL_TOPICS}
+! 		<!-- IF .pagination -->
+! 			<!-- INCLUDE pagination.html -->
+! 		<!-- ELSE -->
+! 			&bull; {PAGE_NUMBER}
+! 		<!-- ENDIF -->
+! 	</div>
+  
+  	</div>
+  <!-- ENDIF -->
